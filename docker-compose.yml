@@ -1,0 +1,10 @@
+version: '3'
+services:
+  web:
+    image: nginx:latest
+    volumes:
+      - ./etc/nginx/:/etc/nginx/conf.d/
+    ports:
+      - "8080:80"
+    environment:
+      - NGINX_PORT=80

@@ -6,6 +6,8 @@ A simple little tool that allows for a nice feature-rich LEMP development enviro
 
 * Can be used with a basic understanding of docker
 * easy wrapper tool that installs dependancies
+* gives you a good consistant starting point, does not try to completely hold your hand
+* developer-oriented
 
 ## Build Targets
 
