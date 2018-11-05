@@ -12,3 +12,5 @@ services:
     build:
       context: ./
       dockerfile: ./img/php56.Dockerfile
+    volumes:
+      - ./sites:/sites:rw
