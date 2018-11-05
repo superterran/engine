@@ -2,6 +2,12 @@
 
 A simple little tool that allows for a nice feature-rich LEMP development environment.
 
+## How-to
+
+* clone new sites to /path/to/engine/sites/<site>
+* start engine
+* go to <type>.<site>.test
+
 ## Conventions
 
 * Can be used with a basic understanding of docker

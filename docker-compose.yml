@@ -6,5 +6,3 @@ services:
       - ./etc/nginx/:/etc/nginx/conf.d/
     ports:
       - "8080:80"
-    environment:
-      - NGINX_PORT=80
