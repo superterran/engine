@@ -3,7 +3,7 @@ services:
   web:
     build:
       context: ./
-      dockerfile: ./img/nginx.Dockerfile
+      dockerfile: ./etc/img/nginx.Dockerfile
     volumes:
       - ./sites:/sites:rw
     ports:
@@ -11,12 +11,12 @@ services:
   php56: 
     build:
       context: ./
-      dockerfile: ./img/php56.Dockerfile
+      dockerfile: ./etc/img/php56.Dockerfile
     volumes:
       - ./sites:/sites:rw
   php71: 
     build:
       context: ./
-      dockerfile: ./img/php71.Dockerfile
+      dockerfile: ./etc/img/php71.Dockerfile
     volumes:
       - ./sites:/sites:rw
