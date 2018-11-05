@@ -14,3 +14,9 @@ services:
       dockerfile: ./img/php56.Dockerfile
     volumes:
       - ./sites:/sites:rw
+  php71: 
+    build:
+      context: ./
+      dockerfile: ./img/php71.Dockerfile
+    volumes:
+      - ./sites:/sites:rw

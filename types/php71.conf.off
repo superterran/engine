@@ -1,3 +1,0 @@
-upstream php71 {
-  server unix:/var/opt/remi/php56/run/php-fpm/php.sock;
-}
