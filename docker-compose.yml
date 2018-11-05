@@ -4,7 +4,8 @@ services:
     image: nginx:latest
     volumes:
       - ./etc/nginx/:/etc/nginx/conf.d/
+      - ./sites:/sites
     ports:
       - "8080:80"
   php56: 
-    image: php:5.6-fpm
+    build: img/php56.Dockerfile   
