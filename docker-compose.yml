@@ -1,11 +1,14 @@
 version: '3'
 services:
   web:
-    image: nginx:latest
-    volumes:
-      - ./etc/nginx/:/etc/nginx/conf.d/
-      - ./sites:/sites
+    build:
+      context: ./
+      dockerfile: ./img/nginx.Dockerfile
+    # volumes:
+    #   - ./sites:/sites:rw
     ports:
-      - "8080:80"
+      - 8080:80
   php56: 
-    build: img/php56.Dockerfile   
+    build:
+      context: ./
+      dockerfile: ./img/php56.Dockerfile

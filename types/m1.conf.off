@@ -1,12 +1,8 @@
-upstream m1_phpfpm {
-  server unix:/var/opt/remi/php56/run/php-fpm/blueacorn.sock;
-}
-
 server {
 
   listen 80;
-  server_name ~^m1.(?<sname>.+?).test${DOLLAR}; 
-  root        /sites/${DOLLAR}sname/webroot/;
+  server_name ~^m1.(?<sname>.+?).test$; 
+  root        /sites/$sname/webroot/;
 
   
   index index.php;
@@ -28,7 +24,7 @@ server {
   gzip_types text/plain application/xml text/css text/js application/x-javascript text/javascript application/json application/xml+rss;
   
   # provide access to urapidflow
-  #location ~ ^/var/urapidflow.*${DOLLAR} {
+  #location ~ ^/var/urapidflow.*$ {
   #  allow all;
   #  autoindex on;
   #}
@@ -53,29 +49,29 @@ server {
   location = /.gitignore        { deny all; }
   
  # location @mage{
- #   rewrite / /index.php?${DOLLAR}args;
+ #   rewrite / /index.php?$args;
  # }
 
  location / {
-            if (!-e ${DOLLAR}request_filename) {
-                    rewrite ^/([^?]*)(?:\?(.*))? /index.php?title=${DOLLAR}1&${DOLLAR}2 last;
+            if (!-e $request_filename) {
+                    rewrite ^/([^?]*)(?:\?(.*))? /index.php?title=$1&$2 last;
             }
-            if (${DOLLAR}uri ~* "\.(ico|css|js|gif|jpeg|png)(\?[0-9]+)?${DOLLAR}") {
+            if ($uri ~* "\.(ico|css|js|gif|jpeg|png)(\?[0-9]+)?$") {
                     expires max;
                     break;
             }
     }  
   
   # Guidance Cachebuster
-  location ~* (.+)\.(\d+)\.(js|css|png|jpg|jpeg|gif)${DOLLAR} {
-      try_files ${DOLLAR}uri ${DOLLAR}1.${DOLLAR}3;
+  location ~* (.+)\.(\d+)\.(js|css|png|jpg|jpeg|gif)$ {
+      try_files $uri $1.$3;
   }
 
 
   # static asset handling
-  location ~ \.(jpeg|jpg|gif|png|css|js|ico|swf|eot|ttf|woff|svg|otf)${DOLLAR} {
+  location ~ \.(jpeg|jpg|gif|png|css|js|ico|swf|eot|ttf|woff|svg|otf)$ {
 
-    if (${DOLLAR}request_filename ~* .(eot|ttf|woff|svg|otf)${DOLLAR}) {
+    if ($request_filename ~* .(eot|ttf|woff|svg|otf)$) {
       add_header Access-Control-Allow-Origin *;
     }  
 
@@ -84,7 +80,7 @@ server {
     access_log off;
     add_header Cache-Control "public";
     expires max;
-    try_files ${DOLLAR}uri ${DOLLAR}uri/ @mage;
+    try_files $uri $uri/ @mage;
   }
   
   # dynamic PHP content
@@ -101,7 +97,7 @@ server {
     
     #fastcgi_param MAGE_RUN_CODE default;
     #fastcgi_param MAGE_RUN_TYPE store;
-    fastcgi_param SCRIPT_FILENAME ${DOLLAR}document_root${DOLLAR}fastcgi_script_name;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
     fastcgi_pass php56;
   }
 }

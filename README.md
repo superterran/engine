@@ -2,6 +2,12 @@
 
 A simple little tool that allows for a nice feature-rich LEMP development environment.
 
+## Running...
+
+```
+$ docker-compose.exe up --build
+```
+
 ## How-to
 
 * clone new sites to /path/to/engine/sites/<site>
