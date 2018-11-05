@@ -6,3 +6,5 @@ services:
       - ./etc/nginx/:/etc/nginx/conf.d/
     ports:
       - "8080:80"
+  php56: 
+    image: php:5.6-fpm
