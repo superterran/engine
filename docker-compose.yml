@@ -8,15 +8,20 @@ services:
       - ./sites:/sites:rw
     ports:
       - 80:80
+    depends_on:
+      - "php56"
+  
   php56: 
     build:
       context: ./
       dockerfile: ./etc/img/php56.Dockerfile
     volumes:
       - ./sites:/sites:rw
-  php71: 
-    build:
-      context: ./
-      dockerfile: ./etc/img/php71.Dockerfile
-    volumes:
-      - ./sites:/sites:rw
+      - /home/me/repos/dl:/sites/dl:rw
+    # php71: 
+  #   build:
+  #     context: ./
+  #     dockerfile: ./etc/img/php71.Dockerfile
+  #   # network_mode: "host"
+    # volumes:
+    #   - ./sites:/sites:rw
