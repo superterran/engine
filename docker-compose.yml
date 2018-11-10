@@ -9,19 +9,28 @@ services:
     ports:
       - 80:80
     depends_on:
-      - "php56"
-  
+      - "php56"  
   php56: 
     build:
       context: ./
       dockerfile: ./etc/img/php56.Dockerfile
     volumes:
       - ./sites:/sites:rw
-      - /home/me/repos/dl:/sites/dl:rw
-    # php71: 
-  #   build:
-  #     context: ./
-  #     dockerfile: ./etc/img/php71.Dockerfile
-  #   # network_mode: "host"
-    # volumes:
-    #   - ./sites:/sites:rw
+  php71: 
+    build:
+      context: ./
+      dockerfile: ./etc/img/php71.Dockerfile
+    volumes:
+      - ./sites:/sites:rw
+
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    # volumes: 
+    #     - ./mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+
