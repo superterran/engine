@@ -1,4 +1,4 @@
-version: '3'
+version: '3.2'
 services:
   web:
     build:
@@ -24,14 +24,13 @@ services:
     volumes:
       - ./sites:/sites:rw
 
-  # db:
-  #   image: mysql
-  #   command: --default-authentication-plugin=mysql_native_password
-  #   restart: always
-  #   # volumes: 
-  #   #     - ./mysql:/var/lib/mysql
-  #   ports:
-  #     - 3306:3306
-  #   environment:
-  #     MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes: 
+        - ./mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
