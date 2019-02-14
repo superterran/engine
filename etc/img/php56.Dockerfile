@@ -15,3 +15,5 @@ RUN apt-get update && apt-get install -y \
   libxslt1-dev 
 #  php5-xdebug
 #  && rm -rf /var/lib/apt/lists/*
+
+RUN docker-php-ext-install -j$(nproc) pdo
