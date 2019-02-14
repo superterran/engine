@@ -28,14 +28,29 @@ bash: ## Connect to bash
 
 enable: ## turns off the pre-existing dev stack on this fedora system and enables this tool
 	sudo systemctl disable nginx
+	sudo systemctl stop nginx
+
 	sudo systemctl disable php70-php-fpm
+	sudo systemctl stop php70-php-fpm
+
 	sudo systemctl disable php71-php-fpm
+	sudo systemctl stop php71-php-fpm
+
 	sudo systemctl disable php-fpm
-	make start
+	sudo systemctl stop php-fpm
+
+	make up
 
 disable: ## urns on the pre-existing dev stack on this fedora system and disables this tool
-	make stop
+	make down
 	sudo systemctl enable nginx
+	sudo systemctl start nginx
+
 	sudo systemctl enable php70-php-fpm
+	sudo systemctl start php70-php-fpm
+
 	sudo systemctl enable php71-php-fpm
+	sudo systemctl start php71-php-fpm
+
 	sudo systemctl enable php-fpm
+	sudo systemctl start php-fpm
