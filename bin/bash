@@ -1,0 +1,30 @@
+#!/bin/bash
+usage="$(basename "$0") [-h] [-s n] -- get a bash prompt inside one of the php containers
+
+where:
+    -h  show this help text
+    -s  set the seed value (default: 42)"
+
+seed=42
+while getopts ':hs:' option; do
+  case "$option" in
+    h) echo "$usage"
+       exit
+       ;;
+    s) seed=$OPTARG
+       ;;
+    :) printf "missing argument for -%s\n" "$OPTARG" >&2
+       echo "$usage" >&2
+       exit 1
+       ;;
+   \?) printf "illegal option: -%s\n" "$OPTARG" >&2
+       echo "$usage" >&2
+       exit 1
+       ;;
+  esac
+done
+shift $((OPTIND - 1))
+
+#@todo determine the correct container without the assumptions
+
+docker exec -it engine_$1_1 /bin/bash
