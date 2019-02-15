@@ -16,18 +16,18 @@ pull: ## Pull latest images
 down: ## Destroy containers
 	docker-compose down -v
 
-up: ## Re-create and start containers
+up: ## down and re-up containers
 	docker-compose down -v
 	docker-compose up -d
+
+rebuild: ## rebuilds current images and ups the containers
+	docker-compose up --build	
 
 stop: ## Stop containers
 	docker-compose stop
 
 start: ## Resume containers
 	docker-compose start
-
-bash: ## Connect to bash
-	docker-compose run cli bash
 
 enable: ## turns off the pre-existing dev stack on this fedora system and enables this tool
 	sudo systemctl disable nginx
