@@ -1,4 +1,4 @@
-version: '3.2'
+version: '3'
 services:
   web:
     build:
@@ -17,20 +17,21 @@ services:
       dockerfile: ./etc/img/php56.Dockerfile
     volumes:
       - ./sites:/sites:rw
+      - ./mysql.sock:/mysql.sock:rw
   php72: 
     build:
       context: ./
       dockerfile: ./etc/img/php72.Dockerfile
     volumes:
       - ./sites:/sites:rw
-
-  db:
-    image: mysql
-    command: --default-authentication-plugin=mysql_native_password
-    restart: always
-    volumes: 
-        - ./mysql:/var/lib/mysql
-    ports:
-      - 3306:3306
-    environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      - ./mysql.sock:/mysql.sock:rw
+  # db:
+  #   image: mysql
+  #   command: --default-authentication-plugin=mysql_native_password
+  #   restart: always
+  #   volumes: 
+  #       - ./mysql:/var/lib/mysql
+  #   ports:
+  #     - 3306:3306
+    # environment:
+    #   MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'

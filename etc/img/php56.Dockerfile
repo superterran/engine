@@ -16,4 +16,4 @@ RUN apt-get update && apt-get install -y \
 #  php5-xdebug
 #  && rm -rf /var/lib/apt/lists/*
 
-RUN docker-php-ext-install -j$(nproc) pdo
+RUN docker-php-ext-install -j$(nproc) pdo pdo_mysql mysqli

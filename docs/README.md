@@ -26,3 +26,10 @@ $ docker-compose.exe up --build
 * Windows 10 with WSL [Running Ubuntu](https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab)
 * Ubuntu LTS
 * Fedroa Latest
+
+
+## External MySQL
+
+If you symlink a socket file to ./mysql.sock, the docker composition will mount this into the container to `/mysql.sock`
+and you will be able to leverage this with your app. The composition has a db service defined for use if you do not want
+to manage your own mysql instance, further defining this support will come soon.
