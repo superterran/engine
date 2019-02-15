@@ -29,7 +29,7 @@ $ make enable || make disable # for Fedora systems currently, will turn off lega
 * Ubuntu LTS
 * Fedroa Latest
 * Google ChromeOS 72+ running Crostini
-
+* MacOS Latest
 
 ## External MySQL
 
