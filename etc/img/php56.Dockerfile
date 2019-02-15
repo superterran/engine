@@ -12,8 +12,7 @@ RUN apt-get update && apt-get install -y \
   libmcrypt-dev \
   libpng-dev \
   libxml2-dev \
-  libxslt1-dev 
-#  php5-xdebug
-#  && rm -rf /var/lib/apt/lists/*
+  libxslt1-dev \
+  && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-install -j$(nproc) pdo pdo_mysql mysqli

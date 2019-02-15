@@ -10,11 +10,19 @@ services:
       - 80:80
     depends_on:
       - "php56"  
+      - "php71"  
       - "php72"  
   php56: 
     build:
       context: ./
       dockerfile: ./etc/img/php56.Dockerfile
+    volumes:
+      - ./sites:/sites:rw
+      - ./mysql.sock:/mysql.sock:rw
+  php71: 
+    build:
+      context: ./
+      dockerfile: ./etc/img/php71.Dockerfile
     volumes:
       - ./sites:/sites:rw
       - ./mysql.sock:/mysql.sock:rw
