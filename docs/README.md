@@ -5,7 +5,9 @@ A simple little tool that allows for a nice feature-rich LEMP development enviro
 ## Running...
 
 ```
-$ docker-compose.exe up --build
+$ make # help menu
+$ make up # This will start the containers
+$ make enable || make disable # for Fedora systems currently, will turn off legacy services and kick off the containers
 ```
 
 ## How-to
