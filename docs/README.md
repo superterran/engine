@@ -28,6 +28,7 @@ $ make enable || make disable # for Fedora systems currently, will turn off lega
 * Windows 10 with WSL [Running Ubuntu](https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab)
 * Ubuntu LTS
 * Fedroa Latest
+* Google ChromeOS 72+ running Crostini
 
 
 ## External MySQL
