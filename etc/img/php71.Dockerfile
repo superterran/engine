@@ -15,4 +15,4 @@ RUN apt-get update && apt-get install -y \
   libxslt1-dev \
   && rm -rf /var/lib/apt/lists/*
 
-RUN docker-php-ext-install -j$(nproc) pdo pdo_mysql mysqli
+RUN docker-php-ext-install -j$(nproc) pdo pdo_mysql mcrypt
