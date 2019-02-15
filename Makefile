@@ -33,8 +33,8 @@ enable: ## turns off the pre-existing dev stack on this fedora system and enable
 	sudo systemctl disable nginx
 	sudo systemctl stop nginx
 
-	sudo systemctl disable mariadb
-	sudo systemctl stop mariadb
+	# sudo systemctl disable mariadb
+	# sudo systemctl stop mariadb
 
 	sudo systemctl disable php70-php-fpm
 	sudo systemctl stop php70-php-fpm
@@ -52,8 +52,8 @@ disable: ## urns on the pre-existing dev stack on this fedora system and disable
 	sudo systemctl enable nginx
 	sudo systemctl start nginx
 
-	sudo systemctl enable mariadb
-	sudo systemctl start mariadb
+	# sudo systemctl enable mariadb
+	# sudo systemctl start mariadb
 
 	sudo systemctl enable php70-php-fpm
 	sudo systemctl start php70-php-fpm
