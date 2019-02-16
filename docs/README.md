@@ -4,7 +4,13 @@ A simple little tool that allows for a nice feature-rich LEMP development enviro
 
 [![Build Status](https://travis-ci.org/superterran/engine.svg?branch=master)](https://travis-ci.org/superterran/engine)
 
-## Running...
+Engine implements a multi-tennant web server so you can develop against and access all the sites at once. To accomplish this with a mix of sites across multiple platforms, it maintains multiple php-fpm instances running different versions. So a Magento 1 sites can run in the older php 5.6 while newer sites can run in php 7.1. This makes things a bit easier compared to solutions like valet. 
+
+Engine is designed to work like a bare- metal solution, but it's really a docker composition with some tooling built around it.  Docker allows this to easily target multiple  dev environments, not to mention making it easy to support a broad range of site types.
+
+An important goal is to make this easy to install and maintain on multiple platforms with effectively a one liner of appimage. 
+
+## Usage
 
 ```
 $ make # help menu
@@ -12,11 +18,11 @@ $ make up # This will start the containers
 $ make enable || make disable # for Fedora systems currently, will turn off legacy services and kick off the containers
 ```
 
-## How-to
+## Quick Start
 
 * clone new sites to /path/to/engine/sites/<site>
 * start engine
-* go to <type>.<site>.test
+* go to type.site.test
 
 ## Conventions
 
