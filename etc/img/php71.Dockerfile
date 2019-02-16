@@ -43,6 +43,16 @@ RUN cd /tmp \
     && rm -Rf ioncube.tar.gz ioncube \
     && echo "zend_extension=/usr/local/lib/php/extensions/ioncube_loader_lin_7.1.so" > /usr/local/etc/php/conf.d/00_docker-php-ext-ioncube.ini
 
+# SourceGuardian
+RUN cd /tmp \
+    && curl -o sourceguardian.tar.gz http://www.sourceguardian.com/loaders/download/loaders.linux-x86_64.tar.gz \
+    && mkdir sourceguardian \
+    && tar -xvvzf sourceguardian.tar.gz --directory ./sourceguardian \
+    && ls \
+    && mv sourceguardian/ixed.7.1.lin /usr/local/lib/php/extensions \
+    && echo "zend_extension=/usr/local/lib/php/extensions/ixed.7.1.lin" > /usr/local/etc/php/conf.d/00_docker-php-ext-sourceguardian.ini \
+    && rm -rf sourceguardian/
+
 # Composer
 RUN curl --silent --show-error https://getcomposer.org/installer | php
 RUN mv /var/www/html/composer.phar /usr/local/bin/composer
