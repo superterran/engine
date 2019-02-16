@@ -27,4 +27,4 @@ shift $((OPTIND - 1))
 
 #@todo determine the correct container without the assumptions
 
-docker exec -it engine_$1_1 /bin/bash
+docker exec -it engine_$1_1 /bin/bash -c 'cd /sites; exec "${SHELL:-sh}"'
