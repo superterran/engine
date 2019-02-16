@@ -20,10 +20,7 @@ up: ## down and re-up containers
 	docker-compose down -v
 	docker-compose up -d
 
-build: ## builds current images and ups the containers from cache
-	docker-compose up --build -d
-
-rebuild: ## rebuilds current images and ups the containers without cache
+build: ## builds current images and ups the containers
 	docker-compose build --no-cache
 
 stop: ## Stop containers
@@ -77,4 +74,5 @@ dnsmasq-rm: ## removes the dnsmasq entry for .test, a restart may be required!
 
 test: ## runs the full test suite
 	make rebuild
+	make up
 	bin/tests
