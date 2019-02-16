@@ -3,15 +3,19 @@ ran=0
 failed=0
 success=0
 run () {
-    echo "Executing: $filename"
+
+    echo -e "\e[1mExecuting:\e[0m \e[36m$filename\e[0m"
     let "ran++"
     if (bash $filename) ; then
-        echo "Test succeeded"
+        echo -e "\e[42mTest Passed!\e[0m"
         let "success++"
     else
-        echo "Test failed"
+        echo -e "\e[101mTest failed!\e[0m"
         let "failed++"
     fi  
+    
+    echo ""
+    echo ""
 }
 
 if [ -z "$1" ]
@@ -28,8 +32,8 @@ echo ""
 echo ""
 echo "Report: "
 echo "  Tests Ran: $ran"
-echo "  Tests Successful: $success"
-echo "  Tests Failed: $failed"
+echo -e "  \e[42mTests Passed:\e[0m $success"
+echo -e "  \e[101mTests Failed:\e[0m $failed"
 echo ""
 if [ "$failed" -eq "0" ]; then
     echo "All tests pass!"
