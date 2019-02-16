@@ -1,1 +1,1 @@
-curl  -H 'Host: site.test' http://127.0.0.1/ | grep "PHP Version 7.2"
+curl  -H 'Host: site.test' http://127.0.0.1/ | grep "PHP Version 5.6"
