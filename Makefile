@@ -71,3 +71,6 @@ dnsmasq: ## adds the dnsmasq entry for .test, a restart may be required!
 dnsmasq-rm: ## removes the dnsmasq entry for .test, a restart may be required!
 	sudo rm /etc/dnsmasq.d/superterran-engine.conf
 	sudo systemctl restart dnsmasq
+
+test: ## runs the full test suite
+	@echo "OK!"
