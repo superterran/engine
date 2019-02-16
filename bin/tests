@@ -1,0 +1,8 @@
+#!/bin/bash
+for filename in ./etc/tests/*.sh; do 
+    if (bash $filename) ; then
+        echo "Test succeeded"
+    else
+        echo "Test failed"
+    fi    
+done
