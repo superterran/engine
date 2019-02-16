@@ -1,0 +1,1 @@
+bin/bash php56 "composer -V" | grep "version"
