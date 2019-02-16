@@ -76,3 +76,10 @@ test: ## runs the full test suite
 	make build
 	make up
 	bin/tests
+
+compose: ## generates the docker composition
+	docker build ./etc -f etc/img/config.Dockerfile -t engine-config:latest
+	docker run engine-config:latest python -- /app/index.py
+
+compose-bash: ## gives you a bash terminal for the config image
+	docker run -it engine-config:latest bash
