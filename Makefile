@@ -73,6 +73,6 @@ dnsmasq-rm: ## removes the dnsmasq entry for .test, a restart may be required!
 	sudo systemctl restart dnsmasq
 
 test: ## runs the full test suite
-	make rebuild
+	make build
 	make up
 	bin/tests
