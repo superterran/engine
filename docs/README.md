@@ -2,6 +2,8 @@
 
 A simple little tool that allows for a nice feature-rich LEMP development environment.
 
+[![Build Status](https://travis-ci.org/superterran/engine.svg?branch=master)](https://travis-ci.org/superterran/engine)
+
 ## Running...
 
 ```
