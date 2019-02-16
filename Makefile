@@ -63,3 +63,11 @@ disable: ## urns on the pre-existing dev stack on this fedora system and disable
 
 	sudo systemctl enable php-fpm
 	sudo systemctl start php-fpm
+
+dnsmasq: ## adds the dnsmasq entry for .test, a restart may be required!
+	sudo cp ./etc/conf/dnsmasq.conf /etc/dnsmasq.d/superterran-engine.conf
+	sudo systemctl restart dnsmasq
+
+dnsmasq-rm: ## removes the dnsmasq entry for .test, a restart may be required!
+	sudo rm /etc/dnsmasq.d/superterran-engine.conf
+	sudo systemctl restart dnsmasq
