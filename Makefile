@@ -20,8 +20,11 @@ up: ## down and re-up containers
 	docker-compose down -v
 	docker-compose up -d
 
-rebuild: ## rebuilds current images and ups the containers
+build: ## builds current images and ups the containers from cache
 	docker-compose up --build -d
+
+rebuild: ## rebuilds current images and ups the containers without cache
+	docker-compose build --no-cache
 
 stop: ## Stop containers
 	docker-compose stop
@@ -73,4 +76,5 @@ dnsmasq-rm: ## removes the dnsmasq entry for .test, a restart may be required!
 	sudo systemctl restart dnsmasq
 
 test: ## runs the full test suite
+	make rebuild
 	bin/tests
