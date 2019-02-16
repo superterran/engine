@@ -4,5 +4,6 @@ for filename in ./etc/tests/*.sh; do
         echo "Test succeeded"
     else
         echo "Test failed"
+        exit 1
     fi    
 done
