@@ -10,17 +10,13 @@ help: ## This help
 log: ## Tail the composition logs
 	docker-compose logs -f
 
-pull: ## Pull latest images
-	docker-compose pull
-
 down: ## Destroy containers
 	docker-compose down -v
 
-up: ## down and re-up containers
-	docker-compose down -v
+up: down ## down and re-up containers
 	docker-compose up -d
 
-build: ## builds current images and ups the containers
+build: down ## builds current images and ups the containers
 	docker-compose build --no-cache
 
 stop: ## Stop containers
@@ -47,8 +43,7 @@ enable: ## turns off the pre-existing dev stack on this fedora system and enable
 
 	make up
 
-disable: ## urns on the pre-existing dev stack on this fedora system and disables this tool
-	make down
+disable: down ## urns on the pre-existing dev stack on this fedora system and disables this tool
 	sudo systemctl enable nginx
 	sudo systemctl start nginx
 
@@ -72,14 +67,14 @@ dnsmasq-rm: ## removes the dnsmasq entry for .test, a restart may be required!
 	sudo rm /etc/dnsmasq.d/superterran-engine.conf
 	sudo systemctl restart dnsmasq
 
-test: ## runs the full test suite
-	make build
-	make up
+test: build up ## runs the full test suite
 	bin/tests
 
-compose: ## generates the docker composition
-	docker build ./etc -f etc/img/config.Dockerfile -t engine-config:latest
+config: config-build ## generates the docker composition
 	docker run engine-config:latest python -- /app/index.py
 
-compose-bash: ## gives you a bash terminal for the config image
+config-bash: ## gives you a bash terminal for the config image
 	docker run -it engine-config:latest bash
+
+config-build: ## builds the config image
+	docker build ./etc -f etc/img/config.Dockerfile -t engine-config:latest
