@@ -1,9 +1,39 @@
 #!/bin/bash
-for filename in ./etc/tests/*.sh; do 
+ran=0
+failed=0
+success=0
+run () {
+    echo "Executing: $filename"
+    let "ran++"
     if (bash $filename) ; then
         echo "Test succeeded"
+        let "success++"
     else
         echo "Test failed"
-        exit 1
-    fi    
-done
+        let "failed++"
+    fi  
+}
+
+if [ -z "$1" ]
+then
+    for filename in ./etc/tests/*.sh; do 
+        run
+    done
+else
+    filename=./etc/tests/$1
+    run
+fi
+
+echo ""
+echo ""
+echo "Report: "
+echo "  Tests Ran: $ran"
+echo "  Tests Successful: $success"
+echo "  Tests Failed: $failed"
+echo ""
+if [ "$failed" -eq "0" ]; then
+    echo "All tests pass!"
+else 
+   echo "Tests have failed, exiting with code 1";
+   exit 1;
+fi
