@@ -2,3 +2,4 @@ sites/**
 var/mysql/**
 var/cachegrind/**
 mysql.sock
+.env

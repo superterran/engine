@@ -5,21 +5,17 @@ services:
       context: ./
       dockerfile: ./etc/img/nginx.Dockerfile
     volumes:
-      - ./sites:/sites:rw
+      - ${SITESDIR}:/sites:rw
     ports:
-      - 80:80
-    depends_on:
-      - "php56"  
-      - "php71"  
-      - "php72"  
+      - ${WEBPORT}:80
   php56: 
     build:
       context: ./
       dockerfile: ./etc/img/php56.Dockerfile
     volumes:
-      - ./var/cachegrind:/cachegrind:rw
-      - ./sites:/sites:rw
-      - ./mysql.sock:/mysql.sock:rw
+      - ${CACHEGRINDDIR}:/cachegrind:rw
+      - ${SITESDIR}:/sites:rw
+      - ${MYSQLSOCK}:/mysql.sock:rw
     expose:
       - "9000"
   php71: 
@@ -27,9 +23,9 @@ services:
       context: ./
       dockerfile: ./etc/img/php71.Dockerfile
     volumes:
-      - ./var/cachegrind:/cachegrind:rw
-      - ./sites:/sites:rw
-      - ./mysql.sock:/mysql.sock:rw
+      - ${CACHEGRINDDIR}:/cachegrind:rw
+      - ${SITESDIR}:/sites:rw
+      - ${MYSQLSOCK}:/mysql.sock:rw
     expose:
       - "9000"
   php72: 
@@ -37,7 +33,8 @@ services:
       context: ./
       dockerfile: ./etc/img/php72.Dockerfile
     volumes:
-      - ./sites:/sites:rw
-      - ./mysql.sock:/mysql.sock:rw
+      - ${CACHEGRINDDIR}:/cachegrind:rw
+      - ${SITESDIR}:/sites:rw
+      - ${MYSQLSOCK}:/mysql.sock:rw
     expose:
       - "9000"
