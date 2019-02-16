@@ -36,8 +36,8 @@ echo -e "  \e[42mTests Passed:\e[0m $success"
 echo -e "  \e[101mTests Failed:\e[0m $failed"
 echo ""
 if [ "$failed" -eq "0" ]; then
-    echo "All tests pass!"
+    echo -e "\e[92mAll tests pass!\e[0m"
 else 
-   echo "Tests have failed, exiting with code 1";
+   echo -e "\e[91mTests have failed!\e[0m exiting with code 1";
    exit 1;
 fi
