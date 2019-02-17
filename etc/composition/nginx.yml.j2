@@ -1,0 +1,7 @@
+    build:
+      context: ./
+      dockerfile: ./etc/img/nginx.Dockerfile
+    volumes:
+      - ${SITESDIR}:/sites:rw
+    ports:
+      - ${WEBPORT}:80
