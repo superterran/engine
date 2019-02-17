@@ -1,0 +1,14 @@
+#!/bin/bash
+
+cd $(dirname $(realpath $0))
+cd ..
+
+if [ "$1" == "" ]; then
+    cat etc/banner.txt
+fi
+
+if [ -f "bin/$1" ]; then
+    bin/$1 $2
+else
+    make $1
+fi

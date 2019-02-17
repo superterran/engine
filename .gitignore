@@ -3,3 +3,4 @@ var/mysql/**
 var/cachegrind/**
 mysql.sock
 .env
+docker-compose.yml

@@ -1,0 +1,11 @@
+
+  php56: 
+    build:
+      context: ./
+      dockerfile: ./etc/img/php56.Dockerfile
+    volumes:
+      - ${CACHEGRINDDIR}:/cachegrind:rw
+      - ${SITESDIR}:/sites:rw
+      - ${MYSQLSOCK}:/mysql.sock:rw
+    expose:
+      - "9000"
