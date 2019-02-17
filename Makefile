@@ -2,7 +2,7 @@
 
 # https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 help: ## This help
-	@echo "Engine!"
+	@cat etc/banner.txt
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 .DEFAULT_GOAL := help
@@ -59,11 +59,11 @@ disable: down ## urns on the pre-existing dev stack on this fedora system and di
 	sudo systemctl enable php-fpm
 	sudo systemctl start php-fpm
 
-dnsmasq: ## adds the dnsmasq entry for .test, a restart may be required!
+dnsmasq-install: ## adds the dnsmasq entry for .test, a restart may be required!
 	sudo cp ./etc/conf/dnsmasq.conf /etc/dnsmasq.d/superterran-engine.conf
 	sudo systemctl restart dnsmasq
 
-dnsmasq-rm: ## removes the dnsmasq entry for .test, a restart may be required!
+dnsmasq-uninstall: ## removes the dnsmasq entry for .test, a restart may be required!
 	sudo rm /etc/dnsmasq.d/superterran-engine.conf
 	sudo systemctl restart dnsmasq
 
@@ -76,3 +76,10 @@ config-bash: ## gives you a bash terminal for the config image
 	docker run -it engine-config:latest bash
 config-build: ## builds the config image
 	docker build ./ -f etc/img/config.Dockerfile -t engine-config:latest --no-cache
+
+bin-install: bin-uninstall ## installs engine bin cmd to /usr/bin/local
+	sudo ln -s "$$(pwd)/bin/engine" /usr/local/bin/engine
+	sudo chmod +x /usr/local/bin/engine
+
+bin-uninstall: ## removes engine cmd from /usr/bin/local
+	sudo unlink /usr/local/bin/engine

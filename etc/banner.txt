@@ -1,0 +1,7 @@
+Usage: engine [command] <argument>
+    engine bash <service_name>
+    engine tests <test_name>
+    engine [option]
+
+Provides a multi-tennant LEMP stack with some user controls
+
