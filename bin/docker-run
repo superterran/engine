@@ -1,0 +1,2 @@
+#!/bin/bash
+docker run engine-config:latest bash -c "echo $SITESDIR"

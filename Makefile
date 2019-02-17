@@ -71,10 +71,9 @@ test: build up ## runs the full test suite
 	bin/tests
 
 config: config-build ## generates the docker composition
-	docker run engine-config:latest python -- /app/index.py
-
+	bin/docker-run
 config-bash: ## gives you a bash terminal for the config image
 	docker run -it engine-config:latest bash
 
 config-build: ## builds the config image
-	docker build ./etc -f etc/img/config.Dockerfile -t engine-config:latest
+	docker build ./ -f etc/img/config.Dockerfile -t engine-config:latest
