@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
   libpng-dev \
   libxml2-dev \
   libxslt1-dev \
+  gnupg2\
   && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-install -j$(nproc) pdo pdo_mysql mcrypt gd xsl bcmath intl soap zip
@@ -57,3 +58,7 @@ RUN cd /tmp \
 RUN curl --silent --show-error https://getcomposer.org/installer | php
 RUN mv /var/www/html/composer.phar /usr/local/bin/composer
 RUN chmod +x /usr/local/bin/composer
+
+# Node and NPM
+RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
+RUN apt-get install -y nodejs
