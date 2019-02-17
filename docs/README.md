@@ -13,9 +13,12 @@ An important goal is to make this easy to install and maintain on multiple platf
 ## Usage
 
 ```
-$ make # help menu
-$ make up # This will start the containers
-$ make enable || make disable # for Fedora systems currently, will turn off legacy services and kick off the containers
+$ make install-bin # install global terminal command
+$ engine || engine help # help menu
+$ engine up # This will start the containers
+$ engine enable | enable || make disable # for Fedora systems currently, will turn off legacy services and kick off the containers
+$ engine bash php56 # get a terminal in the php56 container
+$ engine tests # run all the unit tests
 ```
 
 ## Quick Start
