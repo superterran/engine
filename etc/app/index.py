@@ -15,6 +15,9 @@ with open('/.env') as ins:
 
 body = open('/app/etc/composition/head.yml.j2', 'r').read()
 
+if config['WEB_ENABLE'] is "1":
+    body += open('/app/etc/composition/web.yml.j2', 'r').read()
+
 if config['DB_ENABLE'] is "1":
     body += open('/app/etc/composition/db.yml.j2', 'r').read()
 
