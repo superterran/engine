@@ -15,7 +15,7 @@ down: ## Destroy containers
 up: down config ## down and re-up containers
 	docker-compose up -d
 
-build: config ## builds current images and ups the containers
+build: config ## builds current images
 	docker-compose build --no-cache
 
 stop: ## Stop containers
