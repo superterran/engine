@@ -50,7 +50,7 @@ RUN cd /tmp \
     && mkdir sourceguardian \
     && tar -xvvzf sourceguardian.tar.gz --directory ./sourceguardian \
     && ls \
-    && mv sourceguardian/ixed.7.1.lin /usr/local/lib/php/extensions \
+    && mv sourceguardian/ixed.7.0.lin /usr/local/lib/php/extensions \
     && echo "zend_extension=/usr/local/lib/php/extensions/ixed.7.0.lin" > /usr/local/etc/php/conf.d/00_docker-php-ext-sourceguardian.ini \
     && rm -rf sourceguardian/
 
@@ -62,3 +62,6 @@ RUN chmod +x /usr/local/bin/composer
 # Node and NPM
 RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
 RUN apt-get install -y nodejs
+
+# Grunt
+RUN npm install -g grunt-cli

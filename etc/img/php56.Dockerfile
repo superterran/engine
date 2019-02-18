@@ -57,3 +57,6 @@ RUN chmod +x /usr/local/bin/composer
 # Node and NPM
 RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
 RUN apt-get install -y nodejs
+
+# Grunt
+RUN npm install -g grunt-cli
