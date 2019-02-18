@@ -10,3 +10,5 @@
       - ${SSH_AUTH_SOCK}:/tmp/ssh_auth.sock:rw
     expose:
       - "9000"
+    environment:
+      - SSH_AUTH_SOCK=/tmp/ssh_auth.sock

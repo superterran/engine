@@ -82,3 +82,7 @@ bin-install: bin-uninstall ## installs engine bin cmd to /usr/bin/local
 
 bin-uninstall: ## removes engine cmd from /usr/bin/local
 	sudo unlink /usr/local/bin/engine
+
+nginx-reload: config-build ## reloads nginx, refreshing configs and whatnot
+	docker-compose build --no-cache web
+	make up
