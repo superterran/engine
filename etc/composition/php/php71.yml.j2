@@ -8,7 +8,6 @@
       - ${SITESDIR}:/sites:rw
       - ${MYSQLSOCK}:/mysql.sock:rw
       - ${SSH_AUTH_SOCK}:/tmp/ssh_auth.sock:rw
-      - ./var/cli-tools:/cli-tools:ro
     expose:
       - "9000"
     environment:
