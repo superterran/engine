@@ -68,6 +68,6 @@ RUN npm install -g grunt-cli
 
 # Install cli-tools
 COPY ./var/cli-tools/ /cli-tools-tmp
-RUN rm /cli-tools-tmp/README.md 
 RUN chmod +x /cli-tools-tmp/* 
+RUN rm /cli-tools-tmp/README.md
 RUN cp /cli-tools-tmp/* /usr/bin/
