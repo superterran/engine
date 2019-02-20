@@ -60,3 +60,10 @@ RUN apt-get install -y nodejs
 
 # Grunt
 RUN npm install -g grunt-cli
+
+# Install cli-tools
+RUN mkdir /cli-tools-tmp
+RUN cp /cli-tools/* /cli-tools-tmp/
+RUN rm /cli-tools-tmp/README.md 
+RUN chmod +x /cli-tools-tmp/* 
+RUN cp /cli-tools-tmp/* /usr/bin/
