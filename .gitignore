@@ -5,3 +5,4 @@ mysql.sock
 .env
 docker-compose.yml
 var/nginx/*
+var/cli-tools/*

@@ -86,3 +86,6 @@ bin-uninstall: ## removes engine cmd from /usr/bin/local
 nginx-reload: config-build ## reloads nginx, refreshing configs and whatnot
 	docker-compose build --no-cache web
 	make up
+
+download-cli-tools: ## downloads cli tools for system images
+	bin/download-cli-tools
