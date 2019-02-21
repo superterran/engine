@@ -5,8 +5,10 @@ else
     DOCKEREXE=
 fi
 
-cd $(dirname $(realpath $0))
-cd ..
+if [ -x "$(command -v realpath)" ]; then
+    cd $(dirname $(realpath $0))
+    cd ..
+fi
 
 down() {
     docker-compose${DOCKEREXE} down -v
