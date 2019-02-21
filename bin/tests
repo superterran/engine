@@ -2,11 +2,17 @@
 ran=0
 failed=0
 success=0
+if $(which docker.exe) ; then
+    DOCKEREXE=.exe
+else
+    DOCKEREXE=
+fi
+
 run () {
 
     echo -e "\e[1mExecuting:\e[0m \e[36m$filename\e[0m"
     let "ran++"
-    if (bash $filename) ; then
+    if (DOCKEREXE=$DOCKEREXE bash $filename) ; then
         echo -e "\e[42mTest Passed!\e[0m"
         let "success++"
     else
