@@ -1,8 +1,5 @@
-DOCKEREXE=
-ifeq ($(which docker.exe),'')
-       DOCKEREXE=
-else
-        DOCKEREXE=.exe
+ifeq ($(which docker.exe),)
+       DOCKEREXE :=.exe
 endif
 
 .PHONY: help
