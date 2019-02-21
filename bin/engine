@@ -18,6 +18,7 @@ up() {
 
 config_build() {
     docker${DOCKEREXE} build ./ -f etc/img/config.Dockerfile -t engine-config:latest --no-cache
+    docker${DOCKEREXE} run engine-config:latest python -- /app/index.py > docker-compose.yml
 }
 
 start() {
@@ -42,7 +43,9 @@ case "$1" in
             docker-compose${DOCKEREXE} logs -f
             ;;
 
-        tests)
+        test)
+            config_build
+            up
             bin/tests $2
             ;;
         
@@ -54,9 +57,8 @@ case "$1" in
             stop
             ;;
 
-        config)
+        config-build)
             config_build
-            docker${DOCKEREXE} run engine-config:latest python -- /app/index.py > docker-compose.yml
             ;;
 
         config-bash)
