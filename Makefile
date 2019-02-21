@@ -1,7 +1,6 @@
-ifeq ($(echo $(which docker.exe) | grep .exe), all)
-       DOCKEREXE :=
-else
-       DOCKEREXE :=.exe
+DOCKEREXE=
+ifneq ($(UNAME), Linux)
+    DOCKEREXE :=.exe
 endif
 
 .PHONY: help
