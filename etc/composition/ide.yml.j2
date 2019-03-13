@@ -1,0 +1,7 @@
+
+  ide:
+    image: codercom/code-server
+    volumes:
+      - ${SITESDIR}:/root/:rw
+    ports:
+      - ${IDE_PORT}:8443
