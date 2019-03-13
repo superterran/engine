@@ -1,14 +1,103 @@
 #!/bin/bash
-
-cd $(dirname $(realpath $0))
-cd ..
-
-if [ "$1" == "" ]; then
-    cat etc/banner.txt
-fi
-
-if [ -f "bin/$1" ]; then
-    bin/$1 $2
+if [[ $(which docker.exe) ]]; then
+    DOCKEREXE=.exe
 else
-    make $1
+    DOCKEREXE=
 fi
+
+if [ -x "$(command -v realpath)" ]; then
+    cd $(dirname $(realpath $0))
+    cd ..
+fi
+
+down() {
+    docker-compose${DOCKEREXE} down -v
+}
+
+up() {
+    docker-compose${DOCKEREXE} up -d
+}
+
+config_build() {
+    docker${DOCKEREXE} build ./ -f etc/img/config.Dockerfile -t engine-config:latest --no-cache
+    docker${DOCKEREXE} run engine-config:latest python -- /app/index.py > docker-compose.yml
+}
+
+start() {
+    docker-compose${DOCKEREXE} start
+}
+
+stop() {
+    docker-compose${DOCKEREXE} stop
+}
+
+case "$1" in
+        bash)
+            if [ -z "$3" ]
+            then
+                docker$DOCKEREXE exec -i engine_$2_1 /bin/bash -c 'cd /sites; exec "${SHELL:-sh}"; $2'
+            else
+                docker$DOCKEREXE exec -i engine_$2_1 $3
+            fi
+            ;;
+         
+        log)
+            docker-compose${DOCKEREXE} logs -f
+            ;;
+
+        test)
+            config_build
+            up
+            bin/tests $2
+            ;;
+        
+        start)
+            start
+            ;;
+
+        stop)
+            stop
+            ;;
+
+        config-build)
+            config_build
+            ;;
+
+        config-bash)
+            docker${DOCKEREXE} run -it engine-config:latest bash
+            ;;
+
+        config-reload)
+            docker-compose${DOCKEREXE} build --no-cache web
+            up
+            ;;
+
+        build)
+            config_build
+    	    docker-compose${DOCKEREXE} build --no-cache
+            ;;
+
+        down)
+    	    down
+            ;;
+
+        up)
+            down
+            config
+	        up
+            ;;
+
+        download-cli-tools)
+            FILES=./etc/cli-tools/*
+            for f in $FILES
+            do
+                echo "Fetching $(basename ${f%.*})..."
+                $(cat $f) > ./var/cli-tools/$(basename ${f%.*})
+            done
+            ;;
+
+        *)
+            cat etc/banner.txt
+            echo $"Usage: $0 {start|stop|restart|condrestart|status}"
+            exit 1
+esac

@@ -1,7 +1,6 @@
-language: python
+language: bash
 matrix:
     include:
         - os: linux
-          python: 3.6
-          env: TOXENV=py36
-script: cp .env.sample .env && make test
+        # - os: windows # Not sure how to handle windows and mac, needs docker fixture data!
+script: cp .env.sample .env && bin/engine test

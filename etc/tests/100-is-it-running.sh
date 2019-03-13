@@ -1,1 +1,1 @@
-docker ps | grep 'engine'
+docker$DOCKEREXE ps | grep 'engine'
