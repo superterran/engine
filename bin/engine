@@ -1,7 +1,9 @@
 #!/bin/bash
 if [[ $(which docker.exe) ]]; then
+    echo 'Running in Windows Mode, calling docker.exe'
     DOCKEREXE=.exe
 else
+    echo 'Running in Linux mode, calling the pathed docker bin'
     DOCKEREXE=
 fi
 
@@ -35,9 +37,19 @@ case "$1" in
         bash)
             if [ -z "$3" ]
             then
-                docker$DOCKEREXE exec -i engine_$2_1 /bin/bash -c 'cd /sites; exec "${SHELL:-sh}"; $2'
+                if [ ! $DOCKEREXE ]
+                then 
+                    docker$DOCKEREXE exec -it engine_$2_1 /bin/bash -c 'cd /sites; exec "${SHELL:-sh}"; $2'
+                else 
+                    docker$DOCKEREXE exec -i engine_$2_1 /bin/bash -c 'cd /sites; exec "${SHELL:-sh}"; $2'
+                fi
             else
-                docker$DOCKEREXE exec -i engine_$2_1 $3
+                if [ ! $DOCKEREXE ]
+                then 
+                     docker$DOCKEREXE exec -it engine_$2_1 $3
+                else 
+                     docker$DOCKEREXE exec -i engine_$2_1 $3
+                fi
             fi
             ;;
          
