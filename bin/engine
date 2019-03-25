@@ -103,7 +103,7 @@ case "$1" in
 
         up)
             down
-            config
+            config_build
 	        up
             ;;
 
