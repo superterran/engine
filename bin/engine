@@ -44,6 +44,7 @@ stop() {
 case "$1" in
         bash)
             if [ -z "$3" ]
+            echo -e "Connecting to bash instance of the \e[1m$2\033[0m container..."
             then
                 if [ ! $DOCKEREXE ]
                 then 
@@ -80,6 +81,8 @@ case "$1" in
             ;;
 
         config-build)
+            echo ''
+            echo 'Building engine composition from'
             config_build
             ;;
 
