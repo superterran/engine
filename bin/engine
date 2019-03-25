@@ -1,11 +1,19 @@
 #!/bin/bash
-if [[ $(which docker.exe) ]]; then
+echo ''
+echo 'Engine by Superterran'
+echo ''
+echo 'Auto-detecting OS environment...'
+echo -e "\033[0;31m"
+WHICH=$(which docker.exe)
+echo -e "\033[0m" 
+if [[ $WHICH ]]; then
     echo 'Running in Windows Mode, calling docker.exe'
     DOCKEREXE=.exe
 else
     echo 'Running in Linux mode, calling the pathed docker bin'
     DOCKEREXE=
 fi
+echo ''
 
 if [ -x "$(command -v realpath)" ]; then
     cd $(dirname $(realpath $0))
