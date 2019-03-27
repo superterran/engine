@@ -24,22 +24,33 @@ for phpver in sorted(glob.glob('/app/etc/composition/php/*.yml.j2')):
             earliest = ver.lower()
         latest = ver.lower()
         if config[ver.upper()+'_ENABLE'] is "1":
-            body += "   set $"+ver.lower()+" \"true\";\n"
+            body +="" #body += "#   set $"+ver.lower()+" \"true\";\n"
 
-body += "\n   set $PHP_EARLIEST \""+earliest+"\";\n"
-body += "   set $PHP_LATEST \""+latest+"\";\n"
+# body += "\n   set $PHP_EARLIEST \""+earliest+"\";\n"
+# body += "   set $PHP_LATEST \""+latest+"\";\n"
 
 body += "\n"
 
-body = open('/app/etc/conf/nginx/head.j2', 'r').read()
 
-body += "   default     "+latest+";\n"
+body += "map $sname $phpver { \n"
 
+body += "   default     auto;\n"
 for key,val in config.items():
     if "PHP_" in key:
         body += "   "+key.replace('PHP_','')+"  "+val+";\n"
 
-body += open('/app/etc/conf/nginx/footer.j2', 'r').read()
+body += "}\n\n"
+
+body += "map $type $phpverdefault { \n"
+
+body += "   default     "+latest+";\n"
+for key,val in config.items():
+    if "TYPE_" in key:
+        body += "   "+key.replace('TYPE_','').lower()+"  "+val+";\n"
+
+body += "}\n"
+
+
 
 
 t = Template(body)

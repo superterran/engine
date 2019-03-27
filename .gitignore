@@ -6,3 +6,4 @@ mysql.sock
 docker-compose.yml
 var/nginx/*
 var/cli-tools/*
+./nginx.conf
