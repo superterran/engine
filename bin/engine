@@ -31,6 +31,7 @@ up() {
 config_build() {
     docker${DOCKEREXE} build ./ -f etc/img/config.Dockerfile -t engine-config:latest --no-cache
     docker${DOCKEREXE} run engine-config:latest python -- /app/index.py > docker-compose.yml
+    docker${DOCKEREXE} run engine-config:latest python -- /app/nginx.py > nginx.conf
     docker-compose${DOCKEREXE} build --no-cache web
 }
 

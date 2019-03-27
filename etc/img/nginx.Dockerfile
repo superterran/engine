@@ -5,3 +5,4 @@ COPY ./etc/types/*.conf /etc/nginx/types.d/
 COPY ./var/nginx/*.conf /etc/nginx/sites-enabled/
 
 COPY ./etc/conf/nginx.conf /etc/nginx/nginx.conf
+COPY ./nginx.conf /etc/nginx/nginx-vars.conf
