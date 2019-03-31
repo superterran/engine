@@ -36,8 +36,8 @@ $ engine tests # run all the unit tests
 
 ## Build Targets
 
-* Windows 10 with WSL [Running Ubuntu](https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab)
+* Windows 10 with WSL [Running Ubuntu](https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab) :checked:
 * Ubuntu LTS
-* Fedroa Latest
+* Fedroa Latest :checked: 
 * Google ChromeOS 77+ running Crostini
 * MacOS Latest
