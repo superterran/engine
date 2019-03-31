@@ -39,5 +39,5 @@ $ engine tests # run all the unit tests
 * Windows 10 with WSL [Running Ubuntu](https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab) :heavy_check_mark:
 * Ubuntu LTS
 * Fedroa Latest :heavy_check_mark: 
-* Google ChromeOS 77+ running Crostini
+* Google ChromeOS 74+ running Crostini :heavy_check_mark: 
 * MacOS Latest
