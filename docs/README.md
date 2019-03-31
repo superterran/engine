@@ -39,19 +39,5 @@ $ engine tests # run all the unit tests
 * Windows 10 with WSL [Running Ubuntu](https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab)
 * Ubuntu LTS
 * Fedroa Latest
-* Google ChromeOS 72+ running Crostini
+* Google ChromeOS 77+ running Crostini
 * MacOS Latest
-
-## External MySQL
-
-If you symlink a socket file to ./mysql.sock, the docker composition will mount this into the container to `/mysql.sock`
-and you will be able to leverage this with your app. The composition has a db service defined for use if you do not want
-to manage your own mysql instance, further defining this support will come soon.
-
-## 'External' sites not actually cloned in the sites/ dire
-
-Best for this is to bind mount them to the location so docker can actually view the file, a symlink alone will not work.
-
-```
-$ sudo mount -o bind /home/me/repos/<codebase> <codebase>
-```
