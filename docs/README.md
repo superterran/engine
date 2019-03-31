@@ -1,7 +1,8 @@
 # Engine 
-[![Build Status](https://travis-ci.org/superterran/engine.svg?branch=master)](https://travis-ci.org/superterran/engine)
 
 A simple little tool that allows for a nice feature-rich LEMP development environment.
+
+[![Build Status](https://travis-ci.org/superterran/engine.svg?branch=master)](https://travis-ci.org/superterran/engine)
 
 Engine implements a multi-tennant web server so you can develop against and access all the sites at once. To accomplish this with a mix of sites across multiple platforms, it maintains multiple php-fpm instances running different versions. So a Magento 1 sites can run in the older php 5.6 while newer sites can run in php 7.1. This makes things a bit easier compared to solutions like valet. 
 
