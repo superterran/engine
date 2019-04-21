@@ -14,6 +14,8 @@ confinement: devmode # use 'strict' once you have the right plugs and slots
 
 parts:
   engine:
-    source: https://github.com/superterran/engine/archive/features/snapd.zip
+    source: .
   #  source: https://github.com/superterran/engine/archive/v1.5.5.tar.gz
     plugin: autotools
+    install: |
+      ls
