@@ -102,6 +102,11 @@ case "$1" in
     	    down
             ;;
 
+        update)
+    	    bin/update $2 $3
+            ;;
+
+
         up)
             down
             config_build
