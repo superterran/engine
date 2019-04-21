@@ -59,3 +59,7 @@ bin-install: ## installs engine bin cmd to /usr/bin/local
 
 bin-uninstall: ## removes engine cmd from /usr/bin/local
 	sudo unlink /usr/local/bin/engine
+
+snapcraft: ## builds the snap file
+	snapcraft
+

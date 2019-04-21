@@ -14,5 +14,5 @@ confinement: devmode # use 'strict' once you have the right plugs and slots
 
 parts:
   engine:
-    # See 'snapcraft plugins'
-    plugin: nil
+    source: https://github.com/superterran/engine/archive/v1.5.5.tar.gz
+    plugin: autotools
