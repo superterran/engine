@@ -12,10 +12,9 @@
     fi
     echo -e "This will checkout release $VER. This will override any changes (but not .env) \n"
     read -p "Are you sure you want to update? " -n 1 -r
-    echo    # (optional) move to a new line
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
         git fetch --all --tags
         git checkout $VER -f
-        # bin/engine up
+        bin/engine up
     fi
