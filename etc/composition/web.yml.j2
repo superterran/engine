@@ -7,6 +7,6 @@
     volumes:
       - ${SITESDIR}:/sites:rw
       - ${DOCKER_HOST_SOCK}:/tmp/docker.sock:ro
-      - ./tmp/nginx.conf:/etc/nginx/conf.d/superterran-engine.conf
+      - ./nginx.conf:/etc/nginx/conf.d/superterran-engine.conf
     ports:
       - ${WEBPORT}:80
