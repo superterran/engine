@@ -7,26 +7,26 @@ if [ -x "$(command -v realpath)" ]; then
 fi
 
 down() {
-    docker-compose${DOCKEREXE} -f ./tmp/docker-compose.yml down -v
+    docker-compose${DOCKEREXE} -f ./docker-compose.yml down -v
 }
 
 up() {
-    docker-compose${DOCKEREXE} -f ./tmp/docker-compose.yml up -d
+    docker-compose${DOCKEREXE} -f ./docker-compose.yml up -d
 }
 
 config_build() {
-    docker${DOCKEREXE} build ./ -f etc/img/config.Dockerfile -t engine-config:latest --no-cache
-    docker${DOCKEREXE} run engine-config:latest python -- /app/index.py > ./tmp/docker-compose.yml
-    docker${DOCKEREXE} run engine-config:latest python -- /app/nginx.py > ./tmp/nginx.conf
-    docker-compose${DOCKEREXE} build --no-cache -f ./tmp/docker-compose.yml web
+    docker${DOCKEREXE} build -f etc/img/config.Dockerfile ./ --no-cache
+    docker${DOCKEREXE} run engine-config:latest python -- /app/index.py > ./docker-compose.yml
+    docker${DOCKEREXE} run engine-config:latest python -- /app/nginx.py > ./nginx.conf
+    docker-compose${DOCKEREXE} build --no-cache web
 }
 
 start() {
-    docker-compose${DOCKEREXE} -f ./tmp/docker-compose.yml start
+    docker-compose${DOCKEREXE} start
 }
 
 stop() {
-    docker-compose${DOCKEREXE} -f ./tmp/docker-compose.yml stop
+    docker-compose${DOCKEREXE} stop
 }
 
 case "$1" in
@@ -51,7 +51,7 @@ case "$1" in
             ;;
          
         log)
-            docker-compose${DOCKEREXE} -f ./tmp/docker-compose.yml logs -f
+            docker-compose${DOCKEREXE} -f ./docker-compose.yml logs -f
             ;;
 
         test)
@@ -79,13 +79,13 @@ case "$1" in
             ;;
 
         config-reload)
-            docker-compose${DOCKEREXE} -f ./tmp/docker-compose.yml build --no-cache web
+            docker-compose${DOCKEREXE} -f ./docker-compose.yml build --no-cache web
             up
             ;;
 
         build)
             config_build
-    	    docker-compose${DOCKEREXE} -f ./tmp/docker-compose.yml build --no-cache
+    	    docker-compose${DOCKEREXE} -f ./docker-compose.yml build --no-cache
             ;;
 
         down)
