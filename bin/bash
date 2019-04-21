@@ -1,10 +1,4 @@
 #!/bin/bash
-if $(which docker.exe) ; then
-    DOCKEREXE=.exe
-else
-    DOCKEREXE=
-fi
-
 usage="$(basename "$0") [-h] [-s n] -- get a bash prompt inside one of the php containers
 
 where:
