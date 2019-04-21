@@ -1,1 +1,0 @@
-bin/bash php71 "composer -V" | grep "version"

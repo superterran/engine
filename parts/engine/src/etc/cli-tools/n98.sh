@@ -1,1 +1,0 @@
-curl -s https://files.magerun.net/n98-magerun.phar

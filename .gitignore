@@ -6,4 +6,8 @@ mysql.sock
 docker-compose.yml
 nginx.conf
 var/nginx/*
-var/cli-tools/*
+var/cli-tools/*git 
+
+
+.snapcraft
+parts/**

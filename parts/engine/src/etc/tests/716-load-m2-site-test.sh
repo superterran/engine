@@ -1,1 +1,0 @@
-curl  -H 'Host: m2.site.test' http://127.0.0.1/ | grep "PHP Version"
