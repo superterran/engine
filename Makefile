@@ -61,5 +61,7 @@ bin-uninstall: ## removes engine cmd from /usr/bin/local
 	sudo unlink /usr/local/bin/engine
 
 snapcraft: ## executes snapcraft and generates a snap
+	sudo rm -rf parts/
+	sudo rm -rf prime/
 	sudo docker run -v $$(pwd):/my-snap snapcore/snapcraft sh -c "apt update && cd /my-snap && snapcraft"
 

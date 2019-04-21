@@ -1,0 +1,1 @@
+AC_DEFINE(superterran-engine)
