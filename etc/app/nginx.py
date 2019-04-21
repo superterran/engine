@@ -13,6 +13,7 @@ with open('/.env') as ins:
         if match is not None:
             config[match.group(1)] = match.group(2)
 body = ""
+upstream = ""
 
 
 earliest = 0
@@ -25,12 +26,20 @@ for phpver in sorted(glob.glob('/app/etc/composition/php/*.yml.j2')):
         latest = ver.lower()
         if config[ver.upper()+'_ENABLE'] is "1":
             body +="" #body += "#   set $"+ver.lower()+" \"true\";\n"
+            upstream += open('/app/etc/upstream/'+ver.lower()+".conf", 'r').read() + "\n\n"
+
+typebody = ""
+for types in sorted(glob.glob('/app/etc/types/*.conf')):
+    typebody += open(types, 'r').read() + "\n\n"
+
+sitesbody = ""
+for sites in sorted(glob.glob('/app/var/nginx/*.conf')):
+    sitesbody += open(sites, 'r').read() + "\n\n"
 
 # body += "\n   set $PHP_EARLIEST \""+earliest+"\";\n"
 # body += "   set $PHP_LATEST \""+latest+"\";\n"
 
 body += "\n"
-
 
 body += "map $sname $phpver { \n"
 
@@ -51,8 +60,8 @@ for key,val in config.items():
 body += "}\n"
 
 
-
-
+body += "\n" + upstream + typebody + sitesbody
+ 
 t = Template(body)
 print(t.render(config))
 

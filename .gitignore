@@ -4,6 +4,9 @@ var/cachegrind/**
 mysql.sock
 .env
 docker-compose.yml
+nginx.conf
 var/nginx/*
 var/cli-tools/*
-nginx.conf
+
+.flatpak-builder/**
+_appdir/**

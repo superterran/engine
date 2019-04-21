@@ -1,12 +1,10 @@
 #!/bin/bash
+source bin/_helpers.sh
+
+
 ran=0
 failed=0
 success=0
-if $(which docker.exe) ; then
-    DOCKEREXE=.exe
-else
-    DOCKEREXE=
-fi
 
 run () {
 

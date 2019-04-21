@@ -1,15 +1,5 @@
 #!/bin/bash
-echo -en "Auto-detecting OS environment... \033[0;31m"
-WHICH=$(which docker.exe)
-echo -ne "\033[0m" 
-if [[ $WHICH ]]; then
-    echo 'Running in Windows Mode, calling docker.exe'
-    DOCKEREXE=.exe
-else
-    echo 'Running in Linux mode, calling the pathed docker bin'
-    DOCKEREXE=
-fi
-echo ''
+source bin/_helpers.sh
 
 if [ -x "$(command -v realpath)" ]; then
     cd $(dirname $(realpath $0))
@@ -17,17 +7,17 @@ if [ -x "$(command -v realpath)" ]; then
 fi
 
 down() {
-    docker-compose${DOCKEREXE} down -v
+    docker-compose${DOCKEREXE} -f ./docker-compose.yml down -v
 }
 
 up() {
-    docker-compose${DOCKEREXE} up -d
+    docker-compose${DOCKEREXE} -f ./docker-compose.yml up -d
 }
 
 config_build() {
-    docker${DOCKEREXE} build ./ -f etc/img/config.Dockerfile -t engine-config:latest --no-cache
-    docker${DOCKEREXE} run engine-config:latest python -- /app/index.py > docker-compose.yml
-    docker${DOCKEREXE} run engine-config:latest python -- /app/nginx.py > nginx.conf
+    docker${DOCKEREXE} build -f etc/img/config.Dockerfile ./ --no-cache -t engine-config:latest 
+    docker${DOCKEREXE} run engine-config:latest python -- /app/index.py > ./docker-compose.yml
+    docker${DOCKEREXE} run engine-config:latest python -- /app/nginx.py > ./nginx.conf
     docker-compose${DOCKEREXE} build --no-cache web
 }
 
@@ -61,7 +51,7 @@ case "$1" in
             ;;
          
         log)
-            docker-compose${DOCKEREXE} logs -f
+            docker-compose${DOCKEREXE} -f ./docker-compose.yml logs -f
             ;;
 
         test)
@@ -89,13 +79,13 @@ case "$1" in
             ;;
 
         config-reload)
-            docker-compose${DOCKEREXE} build --no-cache web
+            docker-compose${DOCKEREXE} -f ./docker-compose.yml build --no-cache web
             up
             ;;
 
         build)
             config_build
-    	    docker-compose${DOCKEREXE} build --no-cache
+    	    docker-compose${DOCKEREXE} -f ./docker-compose.yml build --no-cache
             ;;
 
         down)
