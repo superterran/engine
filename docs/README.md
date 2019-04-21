@@ -25,15 +25,15 @@ $ engine tests # run all the unit tests
 * start engine
 * go to type.site.test
 
-## Flatpak
+## Snapd
 
-A nice lofty goal here is to build a flatpak-like thing that can be easily installed through a mainstream software channel. Since I've convinced all my friends that Fedora is the best distro running, I'm choosing GNOME Software on Fedora 30 which features a baked in Flatpak store.  
+A nice lofty goal here is to build a snapd-like thing that can be easily installed through a mainstream software channel. Since I've convinced all my friends that Fedora is the best distro running, I'm choosing GNOME Software on Fedora 30 which features a baked in snap store. 
 
-### Building a Flatpak
+### Building the snap
 
-This will be migrated to the travis file
+This will be migrated to the travis file or something
 
 ```
-$  flatpak-builder _appdir/ org.superterran.Engine.json
+$  snapcraft
 
 ```
