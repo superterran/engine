@@ -3,7 +3,7 @@ var/mysql/**
 var/cachegrind/**
 mysql.sock
 .env
-docker-compose.yml
+tmp/**
 var/nginx/*
 var/cli-tools/*
-nginx.conf
+

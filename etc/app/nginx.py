@@ -32,6 +32,10 @@ typebody = ""
 for types in sorted(glob.glob('/app/etc/types/*.conf')):
     typebody += open(types, 'r').read() + "\n\n"
 
+sitesbody = ""
+for sites in sorted(glob.glob('/app/var/nginx/*.conf')):
+    sitesbody += open(sites, 'r').read() + "\n\n"
+
 # body += "\n   set $PHP_EARLIEST \""+earliest+"\";\n"
 # body += "   set $PHP_LATEST \""+latest+"\";\n"
 
@@ -56,11 +60,8 @@ for key,val in config.items():
 body += "}\n"
 
 
-body += "\n" + upstream + typebody
-
-
-
-
+body += "\n" + upstream + typebody + sitesbody
+ 
 t = Template(body)
 print(t.render(config))
 
