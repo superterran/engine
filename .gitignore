@@ -8,3 +8,5 @@ nginx.conf
 var/nginx/*
 var/cli-tools/*
 
+.flatpak-builder/**
+_appdir/**
