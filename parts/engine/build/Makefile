@@ -59,7 +59,3 @@ bin-install: ## installs engine bin cmd to /usr/bin/local
 
 bin-uninstall: ## removes engine cmd from /usr/bin/local
 	sudo unlink /usr/local/bin/engine
-
-snapcraft: ## executes snapcraft and generates a snap
-	sudo docker run -v $$(pwd):/my-snap snapcore/snapcraft sh -c "apt update && cd /my-snap && snapcraft"
-

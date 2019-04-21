@@ -1,0 +1,6 @@
+language: bash
+matrix:
+    include:
+        - os: linux
+        # - os: windows # Not sure how to handle windows and mac, needs docker fixture data!
+script: cp .env.sample .env && bin/engine test

@@ -1,0 +1,1 @@
+curl -s https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar

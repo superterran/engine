@@ -1,0 +1,14 @@
+
+  php56: 
+    build:
+      context: ./
+      dockerfile: ./etc/img/php56.Dockerfile
+    volumes:
+      - ${CACHEGRINDDIR}:/cachegrind:rw
+      - ${SITESDIR}:/sites:rw
+      - ${MYSQLSOCK}:/mysql.sock:rw
+      - ${SSH_AUTH_SOCK}:/tmp/ssh_auth.sock:rw
+    expose:
+      - "9000"
+    environment:
+      - SSH_AUTH_SOCK=/tmp/ssh_auth.sock

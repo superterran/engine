@@ -1,5 +1,5 @@
 name: engine
-base: core18 
+base: docker 
 version: '1.5.5'
 summary: A nice and simple multi-tenant LEMP stack for web developers
 description: |

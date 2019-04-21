@@ -1,0 +1,1 @@
+bin/bash php71 "php -v" | grep Xdebug

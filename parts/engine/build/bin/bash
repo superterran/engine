@@ -1,0 +1,24 @@
+#!/bin/bash
+usage="$(basename "$0") [-h] [-s n] -- get a bash prompt inside one of the php containers
+
+where:
+    -h  show this help text"
+
+while getopts ':hs:' option; do
+  case "$option" in
+    h) echo "$usage"
+       exit
+       ;;
+  esac
+done
+shift $((OPTIND - 1))
+
+#@todo determine the correct container without the assumptions
+
+if [ -z "$2" ]
+then
+      docker$DOCKEREXE exec -i engine_$1_1 /bin/bash -c 'cd /sites; exec "${SHELL:-sh}"; $2'
+else
+      docker$DOCKEREXE exec -i engine_$1_1 $2
+fi
+

@@ -1,0 +1,8 @@
+
+  ide:
+    image: codercom/code-server
+    command: --allow-http --no-auth
+    volumes:
+      - ${SITESDIR}:/root/:rw
+    ports:
+      - ${IDE_PORT}:8443

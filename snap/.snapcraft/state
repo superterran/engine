@@ -1,0 +1,15 @@
+!GlobalState
+assets:
+  build-packages: [libmpc3=1.0.3-1, manpages=4.04-2, libmpx0=5.4.0-6ubuntu1~16.04.11,
+    libltdl-dev=2.4.6-0.1, autotools-dev=20150820.1, libgcc-5-dev=5.4.0-6ubuntu1~16.04.11,
+    m4=1.4.17-5, linux-libc-dev=4.4.0-145.171, libmpfr4=3.1.4-1, libc6-dev=2.23-0ubuntu11,
+    cpp-5=5.4.0-6ubuntu1~16.04.11, 'cpp=4:5.3.1-1ubuntu1', libitm1=5.4.0-6ubuntu1~16.04.11,
+    libc6=2.23-0ubuntu11, 'automake=1:1.15-4ubuntu1', 'gcc=4:5.3.1-1ubuntu1', libcilkrts5=5.4.0-6ubuntu1~16.04.11,
+    libasan2=5.4.0-6ubuntu1~16.04.11, libquadmath0=5.4.0-6ubuntu1~16.04.11, libisl15=0.16.1-1,
+    libltdl7=2.4.6-0.1, gcc-5-base=5.4.0-6ubuntu1~16.04.11, autoconf=2.69-9, libtsan0=5.4.0-6ubuntu1~16.04.11,
+    libubsan0=5.4.0-6ubuntu1~16.04.11, make=4.1-6, gcc-5=5.4.0-6ubuntu1~16.04.11,
+    xz-utils=5.1.1alpha+20120614-2ubuntu2, liblsan0=5.4.0-6ubuntu1~16.04.11, libgomp1=5.4.0-6ubuntu1~16.04.11,
+    manpages-dev=4.04-2, libc-dev-bin=2.23-0ubuntu11, autopoint=0.19.7-2ubuntu3.1,
+    libatomic1=5.4.0-6ubuntu1~16.04.11, libcc1-0=5.4.0-6ubuntu1~16.04.11, libtool=2.4.6-0.1,
+    libsigsegv2=2.10-4]
+  build-snaps: []
