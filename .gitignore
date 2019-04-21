@@ -11,3 +11,5 @@ var/cli-tools/*git
 
 .snapcraft
 parts/**
+prime/**
+stage/**
