@@ -16,6 +16,6 @@
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
         git fetch --all --tags
-        git checkout origin $VER -f
-        bin/engine up
+        git checkout $VER -f
+        # bin/engine up
     fi

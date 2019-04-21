@@ -93,7 +93,7 @@ case "$1" in
             ;;
 
         update)
-    	    bin/update $2 $3
+    	    sh bin/update $2 $3
             ;;
 
 
