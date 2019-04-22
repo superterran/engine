@@ -24,16 +24,3 @@ $ engine tests # run all the unit tests
 * clone new sites to /path/to/engine/sites/<site>
 * start engine
 * go to type.site.test
-
-## Snapd
-
-A nice lofty goal here is to build a snapd-like thing that can be easily installed through a mainstream software channel. Since I've convinced all my friends that Fedora is the best distro running, I'm choosing GNOME Software on Fedora 30 which features a baked in snap store. 
-
-### Building the snap
-
-This will be migrated to the travis file or something
-
-```
-$  snapcraft
-
-```
