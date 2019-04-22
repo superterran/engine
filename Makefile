@@ -65,3 +65,5 @@ snapcraft: ## executes snapcraft and generates a snap
 	sudo rm -rf prime/
 	sudo docker run -v $$(pwd):/my-snap snapcore/snapcraft sh -c "apt update && cd /my-snap && snapcraft"
 
+install: ## lets install this bad boy
+	echo 'Done!'

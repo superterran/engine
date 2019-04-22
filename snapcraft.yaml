@@ -14,8 +14,7 @@ confinement: devmode # use 'strict' once you have the right plugs and slots
 
 parts:
   engine:
-    source: .
-  #  source: https://github.com/superterran/engine/archive/v1.5.5.tar.gz
-    plugin: autotools
-    install: |
-      ls
+    plugin: make
+    makefile: Makefile
+    make-parameters: [install]
+    make-install-var: .
