@@ -24,6 +24,9 @@ if config['WEB_ENABLE'] is "1":
 if config['DB_ENABLE'] is "1":
     body += open('/app/etc/composition/db.yml.j2', 'r').read()
 
+if config['SMTP_ENABLE'] is "1":
+    body += open('/app/etc/composition/smtp.yml.j2', 'r').read()
+
 for phpver in sorted(glob.glob('/app/etc/composition/php/*.yml.j2')):
     ver = re.search(r"php[0-9][0-9]", phpver).group()
     if ver.upper()+'_ENABLE' in config:

@@ -23,6 +23,7 @@ RUN pecl install xdebug-2.6.0 \
     && docker-php-ext-enable xdebug
 
 RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini
+RUN echo 'SMTP = smtp' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini
 
 # Xdebug
 RUN yes | pecl install xdebug \

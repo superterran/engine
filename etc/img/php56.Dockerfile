@@ -18,6 +18,8 @@ RUN apt-get update && apt-get install -y \
 
 RUN docker-php-ext-install -j$(nproc) pdo pdo_mysql mysqli
 
+RUN echo 'SMTP = smtp' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini
+
 # Xdebug 
 RUN yes | pecl install xdebug-2.5.5 \
   # https://gist.github.com/chadrien/c90927ec2d160ffea9c4
