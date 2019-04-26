@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# detect docker
+if [[ ! $(which git) ]]; then
+    echo 'Git was not detected, please install git before continuing!'
+    exit 0
+fi
+
+# detect git
+if [[ ! $(which git) ]]; then
+    echo 'Git was not detected, please install git before continuing!'
+    exit 0
+fi
+
+WHICH=$(which docker.exe)
+echo -ne "\033[0m" 
+if [[ $WHICH ]]; then
+    echo 'docker.exe detected, assuming windows mode'
+    DOCKEREXE=.exe
+else
+    if [[ ! $(which docker) ]]; then
+        echo 'Docker was not detected, please install docker and docker-compose before continuing!'
+        exit 0
+    fi
+    DOCKEREXE=
+fi
+
+WHICH=$(which docker-compose.exe)
+echo -ne "\033[0m" 
+if [[ $WHICH ]]; then
+    echo 'docker-compose.exe detected, assuming windows mode'
+    DOCKEREXE=.exe
+else
+    if [[ ! $(which docker-compose) ]]; then
+        echo 'docker-compose was not detected, please install docker-compose before continuing!'
+        exit 0
+    fi 
+    DOCKEREXE=
+fi
+
