@@ -9,8 +9,8 @@
       - conf:/etc/nginx/conf.d
       - vhost:/etc/nginx/vhost.d
       - html:/usr/share/nginx/html
-      - dhparam:/etc/nginx/dhparam
-      - certs:/etc/nginx/certs:rw
+      - ./var/dhparam:/etc/nginx/dhparam
+      
       - ${SITESDIR}:/sites:rw
       - ${DOCKER_HOST_SOCK}:/tmp/docker.sock:ro
       - ./nginx.conf:/etc/nginx/conf.d/superterran-engine.conf

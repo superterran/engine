@@ -9,9 +9,8 @@
       - conf:/etc/nginx/conf.d
       - vhost:/etc/nginx/vhost.d
       - html:/usr/share/nginx/html
-      - dhparam:/etc/nginx/dhparam
-      - certs:/etc/nginx/certs:rw
+      - ./var/dhparam:/etc/nginx/dhparam
     network_mode: bridge
     environment: 
-        NGINX_PROXY_CONTAINER: web
-        NGINX_DOCKER_GEN_CONTAINER: web
+        NGINX_PROXY_CONTAINER: engine_web_1
+        NGINX_DOCKER_GEN_CONTAINER: engine_web_1
