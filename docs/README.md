@@ -41,4 +41,4 @@ $ engine tests # run all the unit tests
 
 ## Documentation
 
-Check out the (https://github.com/superterran/engine/wiki)[GitHub Wiki) for this project to see detailed usage documentation.
+Check out the (https://github.com/superterran/engine/wiki)[GitHub Wiki] for this project to see detailed usage documentation.
