@@ -14,7 +14,7 @@ Engine doesn't require meta in your application's codebase, it doesn't require c
 
 ## Quick Install
 
-Paste this into your terminal...
+Warning, this might not work well it's very new but... Paste this into your terminal:
 
 ```
 $ curl https://raw.githubusercontent.com/superterran/engine/master/bin/installer | bash
