@@ -55,7 +55,7 @@ case "$1" in
             ;;
          
         log)
-            docker-compose${DOCKEREXE} -f ./docker-compose.yml logs -f
+            docker-compose${DOCKEREXE} -f ./docker-compose.yml logs -f $2
             ;;
 
         test)
