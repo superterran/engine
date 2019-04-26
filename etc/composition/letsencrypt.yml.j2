@@ -1,7 +1,5 @@
    
 
-    ports:
-      - ${WEBPORT}:80
 
   letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
@@ -15,5 +13,5 @@
       - certs:/etc/nginx/certs:rw
     network_mode: bridge
     environment: 
-        NGINX_PROXY_CONTAINER: engine_web_1
-        NGINX_DOCKER_GEN_CONTAINER: engine_web_1
+        NGINX_PROXY_CONTAINER: web
+        NGINX_DOCKER_GEN_CONTAINER: web
