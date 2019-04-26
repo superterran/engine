@@ -18,6 +18,10 @@ up() {
     docker-compose${DOCKEREXE} -f ./docker-compose.yml up -d
 }
 
+up-rebuild() {
+    docker-compose${DOCKEREXE} -f ./docker-compose.yml up -d --force-recreate --build
+}
+
 config_build() {
     docker${DOCKEREXE} build -f etc/img/config.Dockerfile ./ --no-cache -t engine-config:latest 
     docker${DOCKEREXE} run engine-config:latest python -- /app/index.py > ./docker-compose.yml
@@ -110,6 +114,12 @@ case "$1" in
             down
             config_build
 	        up
+            ;;
+
+        up-rebuild)
+            down
+            config_build
+	        up-rebuild
             ;;
 
         download-cli-tools)
