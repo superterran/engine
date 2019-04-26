@@ -16,12 +16,12 @@ Engine doesn't require meta in your application's codebase, it doesn't require c
 
 We are working on a one-liner to kick this off, and potentially a flatpak or snap that provides this, but for right now you must do some steps manaully. Check the wiki for specfic platform instructions, but for now the installatin is as follows:
 
-x. Install dependancies, docker, docker-machine and git. Make sure docker is running!
-x. Clone down Engine, any path will work but I like to keep mine in home. e.g. `git clone https://github.com/superterran/engine.git ~/engine`
-x. copy `.env.sample` to `.env` and edit to your liking
-x. Install the engine binary, run `cd ~/engine && make install-bin`, this will allow you to run engine globally.
-x. Let's peg ourselves to the currenet release for good measure `engine update` and press Y when prompted.
-x. Finally, start engine to begin using it `engine up`.
+x) Install dependancies, docker, docker-machine and git. Make sure docker is running!
+x) Clone down Engine, any path will work but I like to keep mine in home. e.g. `git clone https://github.com/superterran/engine.git ~/engine`
+x) copy `.env.sample` to `.env` and edit to your liking
+x) Install the engine binary, run `cd ~/engine && make install-bin`, this will allow you to run engine globally.
+x) Let's peg ourselves to the currenet release for good measure `engine update` and press Y when prompted.
+x) Finally, start engine to begin using it `engine up`.
 
 ## Usage
 
