@@ -3,8 +3,6 @@ SCRIPT=`realpath $0`
 SCRIPTPATH=`dirname $SCRIPT`
 source $SCRIPTPATH/_helpers.sh
 
-echo $( cd "$(dirname "$0")" ; pwd -P )
-
 if [ -x "$(command -v realpath)" ]; then
     cd $(dirname $(realpath $0))
     cd ..
@@ -37,8 +35,20 @@ stop() {
     docker-compose${DOCKEREXE} stop
 }
 
+default() {
+    cat etc/banner.txt
+    echo $"Usage: $0 {start|stop|restart|condrestart|status}"
+
+    echo -e "\ncommands, e.g. engine <command>: \n"
+
+    cat bin/engine |  grep ') ##' | grep -v 'bin/engine' | sed 's/) ## /\t/'
+
+    echo -e "\n"
+}
+
+
 case "$1" in
-        bash)
+        bash) ## launches a bash instance into a given container, i.e. `engine bash php70` or `engine bash web`
             if [ -z "$3" ]
             echo -e "Connecting to bash instance of the \e[1m$2\033[0m container..."
             then
@@ -58,36 +68,36 @@ case "$1" in
             fi
             ;;
          
-        log)
+        log) ## Shows composition logs, pass service name as parameter to isolate
             docker-compose${DOCKEREXE} -f ./docker-compose.yml logs -f $2
             ;;
 
-        debug)
+        debug) ## restarts, runs tests and kicks off logs
             bin/engine test
             bin/engine log
             ;;
 
-        test)
+        test) ## runs through unit tests, pass specifc test filename (without extention) to run single test
             config_build
             up
             bin/tests $2
             ;;
         
-        start)
+        start) ## starts the compostion, use up command instead
             start
             ;;
 
-        stop)
+        stop) ## stops compoistion, use the down command instead
             stop
             ;;
 
-        config-build)
+        config-build) ## rebuilds composition with new config
             echo ''
             echo 'Building engine composition from'
             config_build
             ;;
 
-        config-bash)
+        config-bash) 
             docker${DOCKEREXE} run -it engine-config:latest bash
             ;;
 
@@ -101,28 +111,28 @@ case "$1" in
     	    docker-compose${DOCKEREXE} -f ./docker-compose.yml build --no-cache
             ;;
 
-        down)
+        down) ## brings down the engine composition
     	    down
             ;;
 
-        update)
+        update) ## updates engine to latest release, pass in version to peg
     	    sh bin/update $2 $3
             ;;
 
 
-        up)
+        up) ## brings up the engine composition
             down
             config_build
 	        up
             ;;
 
-        up-rebuild)
+        up-rebuild) ## brings up the composition, but forces a rebuild
             down
             config_build
 	        up-rebuild
             ;;
 
-        download-cli-tools)
+        download-cli-tools) ## fetches various cli tools for use with `engine bash`
             FILES=./etc/cli-tools/*
             for f in $FILES
             do
@@ -131,8 +141,13 @@ case "$1" in
             done
             ;;
 
+        help) ## this help
+            default
+             ;;
+
         *)
-            cat etc/banner.txt
-            echo $"Usage: $0 {start|stop|restart|condrestart|status}"
-            exit 1
+            default
+
+
+
 esac
