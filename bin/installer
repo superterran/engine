@@ -48,9 +48,7 @@ if [[ ! $(which engine) ]]; then
     exit 0
 fi
 
-INSTALLDIR=$1
-echo $1
-exit
+INSTALLDIR=
 
 if [ -z "$INSTALLDIR" ]
 then      
@@ -85,4 +83,4 @@ fi
 
 echo -e "\n"
 
-bash -s stable < <(curl -s https://raw.githubusercontent.com/superterran/engine/master/bin/installer)
+bash -s stable < <(curl -s https://raw.githubusercontent.com/superterran/engine/9b32fa801f87a2c0a4cf12bd1a9c9a102ea4195e/bin/installer)

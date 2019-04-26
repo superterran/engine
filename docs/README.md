@@ -12,7 +12,15 @@ Engine is designed to work like a bare-metal solution, but it's really it's tool
 
 Engine doesn't require meta in your application's codebase, it doesn't require complicted setups, or in-depth knowledge about nginx or the rest of the stack. It's geared towards low configuration, simplicity, and getting out of your way so you can work.
 
-## Installation
+## Quick Install
+
+Paste this into your terminal...
+
+```
+$ curl https://raw.githubusercontent.com/superterran/engine/master/bin/installer | bash
+```
+
+## Long Installation
 
 We are working on a one-liner to kick this off, and potentially a flatpak or snap that provides this, but for right now you must do some steps manaully. Check the wiki for specfic platform instructions, but for now the installatin is as follows:
 
