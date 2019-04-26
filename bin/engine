@@ -58,6 +58,11 @@ case "$1" in
             docker-compose${DOCKEREXE} -f ./docker-compose.yml logs -f $2
             ;;
 
+        debug)
+            bin/engine test
+            bin/engine log
+            ;;
+
         test)
             config_build
             up
