@@ -1,4 +1,6 @@
 #!/bin/bash
+REPO=superterran/engine
+REPOURL=git@github.com:$REPO
 
 # detect docker
 if [[ ! $(which git) ]]; then
@@ -7,7 +9,9 @@ if [[ ! $(which git) ]]; then
 fi
 
 # detect git
-if [[ ! $(which git) ]]; then
+if [[ $(which git) ]]; then
+    echo 'Git detected!'
+else
     echo 'Git was not detected, please install git before continuing!'
     exit 0
 fi
@@ -15,7 +19,7 @@ fi
 WHICH=$(which docker.exe)
 echo -ne "\033[0m" 
 if [[ $WHICH ]]; then
-    echo 'docker.exe detected, assuming windows mode'
+    echo 'docker.exe detected! assuming windows mode'
     DOCKEREXE=.exe
 else
     if [[ ! $(which docker) ]]; then
@@ -28,7 +32,7 @@ fi
 WHICH=$(which docker-compose.exe)
 echo -ne "\033[0m" 
 if [[ $WHICH ]]; then
-    echo 'docker-compose.exe detected, assuming windows mode'
+    echo 'docker-compose.exe detected!'
     DOCKEREXE=.exe
 else
     if [[ ! $(which docker-compose) ]]; then
@@ -38,3 +42,43 @@ else
     DOCKEREXE=
 fi
 
+# detect your installed self
+if [[ ! $(which engine) ]]; then
+    echo 'It appears that engine is already installed! Run "engine update" instead!'
+    exit 0
+fi
+
+INSTALLDIR=$1
+
+if [ -z "$INSTALLDIR" ]
+then      
+    read -p "Installation Directory (default: $HOME/engine): " -n 1 -r
+    if [ -z "$REPLY" ]
+    then
+        INSTALLDIR=$HOME"/engine"
+    else
+        INSTALLDIR="$REPLY"
+    fi
+fi
+
+echo -e "Cloning down Engine to $INSTALLDIR \n\n"
+
+git clone $REPOURL $INSTALLDIR
+
+echo -e "Copying default configuration, don't forget to tune $INSTALLDIR/.env when finished! \n\n"
+cp .env.sample .env
+
+echo -e "symlinking engine executable to /usr/bin/local/... simply type 'engine' in a bash prompt to use. \n\n"
+make bin-install
+
+echo -e "Now ready to start Engine! \n\n"
+
+read -p "If you'd like to tune the .env first, now is a good time to exit. Would you like to start engine? " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    git fetch --all --tags
+    git checkout $VER -f
+    bin/engine up
+fi
+
+echo -e "\n"
