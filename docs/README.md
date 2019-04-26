@@ -38,3 +38,7 @@ $ engine tests # run all the unit tests
 * clone new sites to `/path/to/engine/sites/site`, if you changed path in .env be sure to use the new path!
 * `engine up` and ensure you have a hosts file entry if you aren't using dnsmasq
 * go to `type.site.test` and check it out!
+
+## Documentation
+
+Check out the (https://github.com/superterran/engine/wiki)[GitHub Wiki) for this project to see detailed usage documentation.
