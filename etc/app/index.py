@@ -15,6 +15,12 @@ with open('/.env') as ins:
 
 body = open('/app/etc/composition/head.yml.j2', 'r').read()
 
+if config['GUI_ENABLE'] is "1":
+    body += open('/app/etc/composition/gui.yml.j2', 'r').read()
+
+if config['LOGS_ENABLE'] is "1":
+    body += open('/app/etc/composition/logs.yml.j2', 'r').read()
+
 if config['IDE_ENABLE'] is "1":
     body += open('/app/etc/composition/ide.yml.j2', 'r').read()
 
