@@ -12,17 +12,29 @@ Engine is designed to work like a bare-metal solution, but it's really it's tool
 
 Engine doesn't require meta in your application's codebase, it doesn't require complicted setups, or in-depth knowledge about nginx or the rest of the stack. It's geared towards low configuration, simplicity, and getting out of your way so you can work.
 
-## Quick Install
+## Usage
 
-Warning, this might not work well it's very new but... Paste this into your terminal:
+```console
+$ engine # shows help
+$ engine up # starts engine, at this point you should be operational!
+$ engine bash php56 # get a terminal in the php56 container
+$ engine tests # run all the unit tests
+$ engine down # shuts it all off
+```
+
+## Installation
+
+First, make sure you have the proper dependancies, the installation will not continue without them. You need `docker`, `docker-compose` and `git`. If you are installing in Windows, it will detect `docker.exe` and `docker-compose.exe` and use these. 
+
+Paste this into your terminal:
 
 ```console
 source <(curl -s https://raw.githubusercontent.com/superterran/engine/master/bin/installer)
 ```
 
-## Long Installation
+### Manual Installation
 
-We are working on a one-liner to kick this off, and potentially a flatpak or snap that provides this, but for right now you must do some steps manaully. Check the wiki for specfic platform instructions, but for now the installatin is as follows:
+Check the wiki for specfic platform instructions and gotchas, but basically install as follow:
 
 1) Install dependancies, docker, docker-machine and git. Make sure docker is running!
 
@@ -36,14 +48,6 @@ We are working on a one-liner to kick this off, and potentially a flatpak or sna
 
 6) Finally, start engine to begin using it `engine up`.
 
-## Usage
-
-```
-$ engine    # shows help
-$ engine up # starts engine
-$ engine bash php56 # get a terminal in the php56 container
-$ engine tests # run all the unit tests
-```
 
 ## Quick Start
 
