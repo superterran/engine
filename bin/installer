@@ -76,8 +76,6 @@ echo -e "Now ready to start Engine! \n\n"
 read -p "If you'd like to tune the .env first, now is a good time to exit. Would you like to start engine? " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    git fetch --all --tags
-    git checkout $VER -f
     bin/engine up
 fi
 
