@@ -3,10 +3,10 @@
     build:
       context: ./
       dockerfile: ./etc/img/gui/Dockerfile
+    ports:
+      - 3000:3000
     environment:
       VIRTUAL_PORT: "3000"
       VIRTUAL_HOST: "engine.test"
-    volumes:
-      - ./etc/img/gui/:/app/:rw
 
-      
+
