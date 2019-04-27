@@ -72,6 +72,10 @@ case "$1" in
             docker-compose${DOCKEREXE} -f ./docker-compose.yml logs -f $2
             ;;
 
+        api) ## restarts, runs tests and kicks off logs
+            source bin/api $2 $3
+            ;;
+
         debug) ## restarts, runs tests and kicks off logs
             bin/engine test
             bin/engine log
