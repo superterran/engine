@@ -16,8 +16,8 @@ Engine doesn't require meta in your application's codebase, it doesn't require c
 
 Warning, this might not work well it's very new but... Paste this into your terminal:
 
-```
-$ curl https://raw.githubusercontent.com/superterran/engine/master/bin/installer | bash
+```console
+source <(curl -s https://raw.githubusercontent.com/superterran/engine/master/bin/installer)
 ```
 
 ## Long Installation
