@@ -2,5 +2,9 @@ language: bash
 matrix:
     include:
         - os: linux
-        # - os: windows # Not sure how to handle windows and mac, needs docker fixture data!
+        - os: windows # Not sure how to handle windows and mac, needs docker fixture data!
+        - os: osx 
+    allow_failures:
+        - os: windows
+        - os: osx
 script: cp .env.sample .env && bin/engine test
