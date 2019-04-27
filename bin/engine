@@ -78,9 +78,15 @@ case "$1" in
             ;;
 
         test) ## runs through unit tests, pass specifc test filename (without extention) to run single test
-            config_build
-            up
-            bin/tests $2
+
+            if [[ ( "$TRAVIS_OS_NAME" == "osx" ) || ( "$TRAVIS_OS_NAME" == "win" ) ]]; 
+            then 
+                bin/tests --dockerless            
+            else
+                config_build
+                up
+                bin/tests $2
+            fi
             ;;
         
         start) ## starts the compostion, use up command instead

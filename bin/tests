@@ -25,12 +25,24 @@ run () {
 
 if [ -z "$1" ]
 then
-    for filename in ./etc/tests/*.sh; do 
+    for filename in ./etc/tests/dockerless/*.sh; do 
+        run
+    done
+
+    for filename in ./etc/tests/docker/*.sh; do 
         run
     done
 else
-    filename=./etc/tests/$1
-    run
+    if [ $1="--dockerless" ]; then
+        echo -e "Dockerless Only \n"
+
+        for filename in ./etc/tests/dockerless/*.sh; do 
+            run
+        done
+    else
+        filename=./etc/tests/$1
+        run
+    fi
 fi
 
 echo ""
