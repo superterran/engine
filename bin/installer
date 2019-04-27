@@ -82,5 +82,3 @@ then
 fi
 
 echo -e "\n"
-
-bash -s stable < <(curl -s https://raw.githubusercontent.com/superterran/engine/9b32fa801f87a2c0a4cf12bd1a9c9a102ea4195e/bin/installer)
