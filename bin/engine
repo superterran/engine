@@ -79,6 +79,7 @@ case "$1" in
 
         test) ## runs through unit tests, pass specifc test filename (without extention) to run single test
 
+            echo $TRAVIS_OS_NAME
             if [ \( "$TRAVIS_OS_NAME" == "osx" \) -o \( "$TRAVIS_OS_NAME" == "win" \) ] 
             then 
                 bin/tests --dockerless            
