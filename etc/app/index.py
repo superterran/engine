@@ -24,6 +24,9 @@ if config['WEB_ENABLE'] is "1":
 if config['DB_ENABLE'] is "1":
     body += open('/app/etc/composition/db.yml.j2', 'r').read()
 
+if config['ELASTICSEARCH_ENABLE'] is "1":
+    body += open('/app/etc/composition/elasticsearch.yml.j2', 'r').read()
+
 if config['SMTP_ENABLE'] is "1":
     body += open('/app/etc/composition/smtp.yml.j2', 'r').read()
 

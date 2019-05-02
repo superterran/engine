@@ -1,0 +1,13 @@
+
+  smtp:
+    build:
+      context: ./
+      dockerfile: ./etc/img/smtp.Dockerfile
+    expose:
+      - 25
+      - 8025
+    ports:
+      - 8025:8025
+    environment:
+      VIRTUAL_PORT: "8025"
+      VIRTUAL_HOST: "mailhog.test"
