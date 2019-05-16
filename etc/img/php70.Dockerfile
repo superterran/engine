@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
   libxslt1-dev \
   gnupg2\
   imagemagick \
+  libmagick++-6.q16-dev \
   && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-install -j$(nproc) pdo pdo_mysql mcrypt gd xsl bcmath intl soap zip
