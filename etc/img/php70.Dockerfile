@@ -21,8 +21,8 @@ RUN apt-get update && apt-get install -y \
 
 RUN docker-php-ext-install -j$(nproc) pdo pdo_mysql mcrypt gd xsl bcmath intl soap zip
 
-RUN pecl install xdebug-2.6.0 imagick \
-    && docker-php-ext-enable xdebug imagick
+RUN pecl install xdebug-2.6.0 \
+    && docker-php-ext-enable xdebug
 
 RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini
 RUN echo 'SMTP = smtp' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini
