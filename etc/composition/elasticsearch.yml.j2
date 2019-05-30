@@ -1,0 +1,10 @@
+
+  elasticsearch:
+    build:
+      context: ./
+      dockerfile: ./etc/img/elasticsearch.Dockerfile
+    environment:
+      discovery.type: single-node
+    expose:
+      - 9200
+      - 9300
