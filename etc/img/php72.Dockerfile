@@ -20,22 +20,22 @@ RUN apt-get update && apt-get install -y \
 
 RUN docker-php-ext-install -j$(nproc) pdo pdo_mysql gd xsl bcmath intl soap zip
 
-RUN pecl install xdebug-2.6.0 imagick \
-    && docker-php-ext-enable xdebug imagick
+RUN pecl install xdebug-2.6.0 \
+    && docker-php-ext-enable xdebug 
 
 RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini
 RUN echo 'SMTP = smtp' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini
 # Xdebug
 RUN yes | pecl install xdebug \
   # https://gist.github.com/chadrien/c90927ec2d160ffea9c4
-    # && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_autostart=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_host=172.18.0.1" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.profiler_enable_trigger=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.profiler_enable=off" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "profiler_output_dir=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.profiler_output_dir=/cachegrind" >> /usr/local/etc/php/conf.d/xdebug.ini 
+    && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_autostart=on" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_host=172.18.0.1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.profiler_enable_trigger=on" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.profiler_enable=off" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "profiler_output_dir=on" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.profiler_output_dir=/cachegrind" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 # Ioncube Loader
 RUN cd /tmp \
