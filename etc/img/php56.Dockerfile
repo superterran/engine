@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y \
   gnupg2 \
   && rm -rf /var/lib/apt/lists/*
 
-RUN docker-php-ext-install -j$(nproc) pdo pdo_mysql mysqli
+RUN docker-php-ext-install -j$(nproc) pdo pdo_mysql mysqli gd
 
 RUN echo 'SMTP = smtp' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini
 

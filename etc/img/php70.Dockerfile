@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y \
   libmagick++-6.q16-dev \
   && rm -rf /var/lib/apt/lists/*
 
-RUN docker-php-ext-install -j$(nproc) pdo pdo_mysql mcrypt gd xsl bcmath intl soap zip
+RUN docker-php-ext-install -j$(nproc) pdo pdo_mysql mcrypt gd xsl bcmath intl soap zip gd
 
 RUN pecl install xdebug-2.6.0 \
     && docker-php-ext-enable xdebug
