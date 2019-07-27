@@ -38,7 +38,7 @@ fi
 # detect your installed self
 if [[ ! $(which engine) ]]; then
    echo 'It appears that engine is already installed! Run "engine update" instead!'
-   exit 0
+   # exit 0
 fi
 
 INSTALLDIR=
