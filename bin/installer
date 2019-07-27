@@ -1,4 +1,5 @@
 #!/bin/bash
+exec 3<>/dev/tty
 REPO=superterran/engine
 REPOURL=git@github.com:$REPO
 
@@ -35,16 +36,16 @@ else
 fi
 
 # detect your installed self
-# if [[ ! $(which engine) ]]; then
-#    echo 'It appears that engine is already installed! Run "engine update" instead!'
-#    exit 0
-# fi
+if [[ ! $(which engine) ]]; then
+   echo 'It appears that engine is already installed! Run "engine update" instead!'
+   exit 0
+fi
 
 INSTALLDIR=
 
 if [ -z "$INSTALLDIR" ]
 then      
-    read -p "Installation Directory (default: $HOME/engine): " -n 1 -r
+    read -u 3 -p "Installation Directory (default: $HOME/engine): " -n 1 -r
     if [ -z "$REPLY" ]
     then
         INSTALLDIR=$HOME"/engine"
@@ -57,6 +58,8 @@ echo -e "Cloning down Engine to $INSTALLDIR \n\n"
 
 git clone $REPOURL $INSTALLDIR
 
+cd $INSTALLDIR
+
 echo -e "Copying default configuration, don't forget to tune $INSTALLDIR/.env when finished! \n\n"
 cp .env.sample .env
 
@@ -65,7 +68,7 @@ make bin-install
 
 echo -e "Now ready to start Engine! \n\n"
 
-read -p "If you'd like to tune the .env first, now is a good time to exit. Would you like to start engine? " -n 1 -r
+read -u 3 -p "If you'd like to tune the .env first, now is a good time to exit. Would you like to start engine? " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     bin/engine up
