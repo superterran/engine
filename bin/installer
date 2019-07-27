@@ -8,14 +8,6 @@ if [[ ! $(which git) ]]; then
     exit 0
 fi
 
-# detect git
-if [[ $(which git) ]]; then
-    echo 'Git detected!'
-else
-    echo 'Git was not detected, please install git before continuing!'
-    exit 0
-fi
-
 WHICH=$(which docker.exe)
 echo -ne "\033[0m" 
 if [[ $WHICH ]]; then
@@ -43,10 +35,10 @@ else
 fi
 
 # detect your installed self
-if [[ ! $(which engine) ]]; then
-    echo 'It appears that engine is already installed! Run "engine update" instead!'
-    exit 0
-fi
+# if [[ ! $(which engine) ]]; then
+#    echo 'It appears that engine is already installed! Run "engine update" instead!'
+#    exit 0
+# fi
 
 INSTALLDIR=
 
