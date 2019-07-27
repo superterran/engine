@@ -29,7 +29,7 @@ First, make sure you have the proper dependancies, the installation will not con
 Paste this into your terminal:
 
 ```console
-source <(curl -s https://raw.githubusercontent.com/superterran/engine/master/bin/installer)
+ curl -s https://raw.githubusercontent.com/superterran/engine/master/bin/installer | bash
 ```
 
 ### Manual Installation
