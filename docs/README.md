@@ -24,7 +24,13 @@ $ engine down # shuts it all off
 
 ## Installation
 
-First, make sure you have the proper dependancies, the installation will not continue without them. You need `docker`, `docker-compose` and `git`. If you are installing in Windows, it will detect `docker.exe` and `docker-compose.exe` and use these. 
+First, Install dependancies, `docker`, `docker-compose` and `git`. 
+
+**NOTE** You may run into problems with the distro-provided version of docker, it's usually best to follow the official install instructions for your distro, i.e. https://docs.docker.com/install/linux/docker-ce/fedora/
+
+### Quick Installation
+
+First, make sure you have the proper dependancies, the installation will not continue without them. If you are installing in Windows WSL, it will detect `docker.exe` and `docker-compose.exe` and use these. 
 
 Paste this into your terminal:
 
