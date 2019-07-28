@@ -36,7 +36,7 @@ sh -c "$(curl -sSL https://raw.githubusercontent.com/superterran/engine/master/b
 
 Check the wiki for specfic platform instructions and gotchas, but basically install as follow:
 
-1) Install dependancies, docker, docker-machine and git. Make sure docker is running!
+1) Install dependancies, docker, docker-machine and git. You may run into problems with the distro-provided version of docker, it's usually best to follow the official install instructions for your distro, i.e. https://docs.docker.com/install/linux/docker-ce/fedora/
 
 2) Clone down Engine, any path will work but I like to keep mine in home. e.g. `git clone https://github.com/superterran/engine.git ~/engine`
 
