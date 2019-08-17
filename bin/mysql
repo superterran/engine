@@ -1,0 +1,18 @@
+#!/bin/bash
+usage="$(basename "$0") [-h] [-s n] -- get a mysql-cli prompt
+
+where:
+    -h  show this help text"
+
+while getopts ':hs:' option; do
+  case "$option" in
+    h) echo "$usage"
+       exit
+       ;;
+  esac
+done
+shift $((OPTIND - 1))
+
+#@todo determine the correct container without the assumptions
+
+docker$DOCKEREXE exec -i engine_db_1 mysql

@@ -1,0 +1,1 @@
+bin/bash php56 "php -v" | grep ionCube
