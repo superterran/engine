@@ -84,7 +84,7 @@ case "$1" in
             ;;
          
         mysql) ## provides a mysql prompt inside the db container
-            docker$DOCKEREXE exec -it engine_db_1 /bin/bash -c 'cd /sites; exec "${SHELL:-sh}"; $2'
+            docker$DOCKEREXE exec -it engine_db_1 mysql
         ;; 
         log) ## Shows composition logs, pass service name as parameter to isolate
             docker-compose${DOCKEREXE} -f ./docker-compose.yml logs -f $2
