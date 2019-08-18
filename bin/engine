@@ -10,7 +10,7 @@ realpath() {
   done
   REALPATH="$PWD/$(basename "$1")"
   cd "$OURPWD"
-  echo "$REALPATH"
+  echo "$REALPATH" 
 }
 realpath "$@"
 
@@ -37,7 +37,7 @@ up-rebuild() {
 
 config_build() {
     docker${DOCKEREXE} build -f etc/img/config.Dockerfile ./ --no-cache -t engine-config:latest 
-    docker${DOCKEREXE} run engine-config:latest python -- /app/index.py > ./docker-compose.yml
+    docker${DOCKEREXE} run engine-config:latest python -- /app/composition.py > ./docker-compose.yml
     docker${DOCKEREXE} run engine-config:latest python -- /app/nginx.py > ./nginx.conf
     docker-compose${DOCKEREXE} build --no-cache web
 }
@@ -169,6 +169,10 @@ case "$1" in
         help) ## this help
             default
              ;;
+
+        push) ## builds images and pushes to registry
+
+            ;;
 
         *)
             default
