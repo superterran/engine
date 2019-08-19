@@ -53,7 +53,7 @@ dnsmasq-uninstall: ## removes the dnsmasq entry for .test, a restart may be requ
 	sudo rm /etc/dnsmasq.d/superterran-engine.conf
 	sudo systemctl restart dnsmasq
 
-bin-install: ## installs engine bin cmd to /usr/bin/local
+bin-install: bin-uninstall ## installs engine bin cmd to /usr/bin/local
 	sudo ln -s "$$(pwd)/bin/engine" /usr/local/bin/engine
 	sudo chmod +x /usr/local/bin/engine
 

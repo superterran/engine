@@ -1,10 +1,9 @@
 #!/bin/bash
-exec 3<>/dev/tty
 REPO=superterran/engine
 REPOURL=git@github.com:$REPO
 
 # detect docker
-if [[ ! $(which git) ]]; then
+if [[ ! $(command -v git) ]]; then
     echo 'Git was not detected, please install git before continuing!'
     exit 0
 fi
@@ -36,7 +35,7 @@ else
 fi
 
 # detect your installed self
-if [[ ! $(which engine) ]]; then
+if [[ ! $(command -v engine) ]]; then
    echo 'It appears that engine is already installed! Run "engine update" instead!'
    # exit 0
 fi
@@ -56,20 +55,30 @@ fi
 
 echo -e "Cloning down Engine to $INSTALLDIR \n\n"
 
+
+read -p "Installation Directory (default: $HOME/.engine): " INSTALLDIR
+
+echo $INSTALLDIR
+
+if [ -z "$INSTALLDIR" ]; then
+    INSTALLDIR=$HOME"/.engine"
+fi
+
 git clone $REPOURL $INSTALLDIR
 
 cd $INSTALLDIR
 
 echo -e "Copying default configuration, don't forget to tune $INSTALLDIR/.env when finished! \n\n"
-cp .env.sample .env
+cp $INSTALLDIR/.env.sample $INSTALLDIR/.env
 
 echo -e "symlinking engine executable to /usr/bin/local/... simply type 'engine' in a bash prompt to use. \n\n"
-make bin-install
+make bin-install --directory $INSTALLDIR
 
 echo -e "Now ready to start Engine! \n\n"
 
-read -u 3 -p "If you'd like to tune the .env first, now is a good time to exit. Would you like to start engine? " -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]]
+read -p "If you'd like to tune the .env first, now is a good time to exit. Would you like to start engine?" STARTNOW
+
+if [[ $STARTNOW =~ ^[Yy]$ ]]
 then
     bin/engine up
 fi
