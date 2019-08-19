@@ -48,7 +48,7 @@ then
     read -u 3 -p "Installation Directory (default: $HOME/engine): " -n 1 -r
     if [ -z "$REPLY" ]
     then
-        INSTALLDIR=$HOME"/engine"
+        INSTALLDIR=$HOME"/.engine"
     else
         INSTALLDIR="$REPLY"
     fi
