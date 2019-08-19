@@ -45,7 +45,7 @@ INSTALLDIR=
 
 if [ -z "$INSTALLDIR" ]
 then      
-    read -u 3 -p "Installation Directory (default: $HOME/engine): " -n 1 -r
+    read -u 3 -p "Installation Directory (default: $HOME/.engine): " -n 1 -r
     if [ -z "$REPLY" ]
     then
         INSTALLDIR=$HOME"/.engine"
