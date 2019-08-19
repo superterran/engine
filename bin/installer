@@ -42,31 +42,16 @@ fi
 
 INSTALLDIR=
 
-if [ -z "$INSTALLDIR" ]
-then      
-    read -u 3 -p "Installation Directory (default: $HOME/.engine): " -n 1 -r
-    if [ -z "$REPLY" ]
-    then
-        INSTALLDIR=$HOME"/.engine"
-    else
-        INSTALLDIR="$REPLY"
-    fi
-fi
+read -p "Installation Directory (default: $HOME/.engine): " INSTALLDIR
 
 echo -e "Cloning down Engine to $INSTALLDIR \n\n"
 
-
-read -p "Installation Directory (default: $HOME/.engine): " INSTALLDIR
-
-echo $INSTALLDIR
 
 if [ -z "$INSTALLDIR" ]; then
     INSTALLDIR=$HOME"/.engine"
 fi
 
 git clone $REPOURL $INSTALLDIR
-
-cd $INSTALLDIR
 
 echo -e "Copying default configuration, don't forget to tune $INSTALLDIR/.env when finished! \n\n"
 cp $INSTALLDIR/.env.sample $INSTALLDIR/.env
