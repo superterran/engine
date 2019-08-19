@@ -8,7 +8,7 @@ if [[ ! $(command -v git) ]]; then
     exit 0
 fi
 
-WHICH=$(which docker.exe)
+WHICH=$(command -v docker.exe)
 echo -ne "\033[0m" 
 if [[ $WHICH ]]; then
     echo 'docker.exe detected! assuming windows mode'
@@ -21,13 +21,13 @@ else
     DOCKEREXE=
 fi
 
-WHICH=$(which docker-compose.exe)
+WHICH=$(command -v docker-compose.exe)
 echo -ne "\033[0m" 
 if [[ $WHICH ]]; then
     echo 'docker-compose.exe detected!'
     DOCKEREXE=.exe
 else
-    if [[ ! $(which docker-compose) ]]; then
+    if [[ ! $(command -v docker-compose) ]]; then
         echo 'docker-compose was not detected, please install docker-compose before continuing!'
         exit 0
     fi 
