@@ -1,5 +1,5 @@
 #!/bin/bash
-exec 3<>/dev/tty
+# exec 3<>/dev/tty
 REPO=superterran/engine
 REPOURL=git@github.com:$REPO
 
